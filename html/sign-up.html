@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Login Personal</title>
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/estilos.css">
+
+    <!-- Incluir jQuery -->
+    <script src="../js/jquery-3.1.1.min.js"></script>
+</head>
+
+<body class="bg-light bkcolor " style="padding-bottom: 50px">
+    <div>
+        <div class="container">
+            <div class="container-fluid">
+                <h1 class="text-center">INICIAR SESIÓN</h1>
+                <h1 class="text-center">
+                    <sup>Personal</sup>
+                </h1>
+            </div>
+
+        </div>
+        <hr>
+        <div class="slideshow-container">
+            <!-- Full-width images with number and caption text -->
+            <div class="mySlides fadeC">
+                <div class="numbertext">1 / 5</div>
+                <img src="../img/logo.png">
+                <div class="text">Vita Bienes Raíces</div>
+            </div>
+            <div class="mySlides fadeC">
+                <div class="numbertext">2 / 5</div>
+                <img src="../img/img1.jpg">
+                <div class="text">Roma Norte, Cuauhtémoc</div>
+            </div>
+
+            <div class="mySlides fadeC">
+                <div class="numbertext">3 / 5</div>
+                <img src="../img/img2.jpg">
+                <div class="text">Santa Fe, Álvaro Obregón</div>
+            </div>
+
+            <div class="mySlides fadeC">
+                <div class="numbertext">4 / 5</div>
+                <img src="../img/img3.jpg">
+                <div class="text">Pedregal de San Nicolás 3A Sección, Tlalpan</div>
+            </div>
+            <div class="mySlides fadeC">
+                <div class="numbertext">5 / 5</div>
+                <img src="../img/img4.jpg">
+                <div class="text">Del Valle Centro, Benito Juárez</div>
+            </div>
+        </div>
+        <br>
+        <div style="text-align:center">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+        <div class="container" id="bloque1">
+            <form class="container-fluid" action="../php/verify-personal.php" method="POST">
+                <br>
+                <div class="input-group mb-3">
+
+                    <div class="input-group">
+
+                        <span class=" input-group-text " id="basic-addon1 ">@</span>
+                        <input class="form-control" name="usuario" type="text" id="usuario" required placeholder="Usuario" required>
+                    </div>
+                </div>
+                <br>
+                <input class="form-control" name="password" type="password" id="password" required placeholder="Contraseña" required>
+                <br>
+
+                <input class="form-control btn btn-warning" type="submit" name="Submit" value="LOGIN" id="sub">
+                <br>
+                <br>
+                <br> ¿No tiene una cuenta?
+                <a> Contácte al administrador del sistema </a>
+                <br> ¿No es parte del personal de VITA?
+                <a href="/vita/html/index.html"> Regresar a la elección de usuario </a>
+            </form>
+            <br>
+            <br>
+            <hr>
+
+            <footer class="container">
+                &copy;2018 -
+                <a href="http://www.vitabienesraices.com/"> VITA BIENES RAÍCES</a>
+            </footer>
+        </div>
+    </div>
+</body>
+<script>
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1 }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" activeC", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " activeC";
+        setTimeout(showSlides, 2000);
+    }
+</script>
+
+</html>
