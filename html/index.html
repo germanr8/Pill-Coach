@@ -6,59 +6,51 @@
     <title>Login Personal</title>
 
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/index.css">
 
     <!-- Incluir jQuery -->
     <script src="../js/jquery-3.1.1.min.js"></script>
 </head>
 
 <body class="bg-primary" style="padding-bottom: 50px">
-    <div>
-        <div class="container">
+    <div class="container header-app">
 
-            <div class="container-fluid">
-                <h1 class="text-center">Pill Coach</h1>
-            </div>
-
+        <div class="container-fluid">
+            <h1 class="text-center">Pill Coach</h1>
         </div>
+
+    </div>
+    <div class="bg-sign-in">
         <hr>
-
-        <br>
-        <div style="text-align:center">
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-        </div>
-
-        <div id="bloque1" class="container card" style="width: 80%;">
-            <form class=" container-fluid " action=" " method="POST ">
+        <div class="container card bloque-sign">
+            <form class="container-fluid login-container" action="" method="POST ">
                 <br>
-                <div class="input-group mb-3 ">
 
-                    <div class="input-group ">
+                <h5 class="card-title">Iniciar sesión</h5>
+                <div class="input-group mb-3">
 
-                        <span class=" input-group-text " id="basic-addon1 ">@</span>
-                        <input class="form-control " name="usuario " type="text " id="usuario " required placeholder="Usuario " required>
+                    <div class="input-group">
+
+                        <span class="input-group-text" id="basic-addon1">@</span>
+                        <input class="form-control" name="usuario" type="text" id="usuario" required placeholder="Usuario" required>
                     </div>
                 </div>
                 <br>
-                <input class="form-control " name="password " type="password " id="password " required placeholder="Contraseña " required>
+                <input class="form-control" name="password" type="password" id="password" required placeholder="Contraseña" required>
                 <br>
 
-                <input class="form-control btn btn-warning " type="submit " name="Submit " value="LOGIN " id="sub ">
+                <input class="form-control btn btn-primary login-btn" type="submit" name="Submit" value="INICIAR" id="sub">
                 <br>
 
-                <br> ¿No tiene una cuenta? REGISTRAR
+                <br> ¿No tiene una cuenta?
+                <br>
+                <a href="sign-up.html">REGISTRARSE</a>
             </form>
-            <br>
             <br>
             <hr>
 
-            <footer class="container ">
-                &copy;2018 -
-                <a href=""> PILL-COACH</a>
+            <footer class="container">
+                &copy;2018 - PILL-COACH
             </footer>
         </div>
     </div>
