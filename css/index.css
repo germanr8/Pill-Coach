@@ -21,7 +21,7 @@ body, html{
 
 .bg-sign-up{
    background-image: url("../img/patient-img.jpg");
-   height: 107%; 
+   height: 111%; 
    background-position: center;
    background-repeat: no-repeat;
    background-size: cover;
@@ -32,6 +32,26 @@ body, html{
     margin-top: 0;
     opacity: 0.95;
     filter: alpha(opacity=95); /* For IE8 and earlier */
+}
+
+.header{
+    margin-top: .7%;
+    text-align:center;
+}
+
+.pill-coach-text{
+    color: white;
+    display: inline-block;
+}
+
+.logo{
+    margin-top: .7%;
+    background-image: url("../img/capsule.png");
+    background-size: cover;
+    height: 45px;
+    width: 45px;
+    display: inline-block;
+    
 }
 
 /* Responsive */
