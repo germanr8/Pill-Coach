@@ -1,0 +1,114 @@
+/******************************************/
+/*            CSS GENERAL                */
+/****************************************/
+
+body{
+    /*font-family: 'Lato', sans-serif;*/
+}
+
+/******************************************/
+/* CSS para interfaz de login y registro */
+/****************************************/
+
+.login-btn{
+    width: 45%;
+    margin: 0 auto;
+}
+
+.login-container{
+    text-align: center;
+}
+
+body, html{
+    height: 100%;
+}
+
+.bg-sign-in{
+    background-image: url("../img/patient-img2.jpg");
+   height: 100%; 
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+.bg-sign-up{
+   background-image: url("../img/patient-img.jpg");
+   height: 111%; 
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+.bloque-sign{
+    width: 55%;
+    margin-top: 0;
+    opacity: 0.95;
+    filter: alpha(opacity=95); /* For IE8 and earlier */
+}
+
+.header{
+    margin-top: .7%;
+    text-align:center;
+}
+
+.pill-coach-text{
+    color: white;
+    display: inline-block;
+}
+
+.logo{
+    margin-top: .7%;
+    background-image: url("../img/capsule.png");
+    background-size: cover;
+    height: 45px;
+    width: 45px;
+    display: inline-block;
+    
+}
+
+/* Responsive */
+@media (max-width:575px){
+    .bloque-sign{
+        width: 80%;
+    }
+}
+
+/************************************/
+/* CSS para dashboard del paciente */
+/**********************************/
+.dashboard-p .card{
+    cursor: pointer;
+}
+
+.dashboard-p .card:hover{
+    cursor: pointer;
+    background-color: #e5e5e5;
+    color: #28a745;
+}
+
+.dashboard-p .card-group{
+    display: block;
+}
+
+.dashboard-p .card-img-top {
+    display: block;
+    margin: auto;
+    width: 70%;
+    height: 70%;
+}
+
+.dashboard-p .card-body{
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+.dashboard-p .container{
+    margin: 0px 0px 0px 0px;
+}
+
+.bg-dashboard-p{
+    background-color: whitesmoke;
+}
+
+/**********************************/
