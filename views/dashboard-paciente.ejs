@@ -1,0 +1,82 @@
+<% include partials/header.ejs %>
+    <% var user %>
+        <% var nombre %>
+
+            <body class="bg-success" style="padding-bottom: 50px">
+                <input name="current_user" id="current_user" type="hidden" value="<%= user %>">
+                <div class="container header-app">
+
+                    <div class="container-fluid header">
+                        <div class="logo"></div>
+                        <h1 class="text-center pill-coach-text">Pill Coach</h1>
+                        <h1 class="text-white">Hola,
+                            <%= nombre %>!
+                        </h1>
+                    </div>
+                </div>
+                <div class="bg-dashboard-p dashboard-p">
+                    <hr>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-2">
+                                <div class="card-group">
+                                    <div class="card card-medicina">
+                                        <img class="card-img-top" src="/img/medicina.png" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Medicina</h5>
+                                        </div>
+                                    </div>
+                                    <div class="card card-agenda">
+                                        <img class="card-img-top" src="/img/agenda.png" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Agenda del día</h5>
+                                        </div>
+                                    </div>
+                                    <div class="card card-calendario">
+                                        <img class="card-img-top" src="/img/calendario.png" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Calendario</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col display-tool">
+                                <div class="medicina-tool">
+                                    <p class="text-center font-weight-bold text-uppercase">Opciones de medicina</p>
+                                    <div class="btn-group-vertical option-set medicina-options">
+                                        <button type="button" class="btn btn-success">Registrar medicina</button>
+                                        <button type="button" class="btn btn-primary">Ver información de medicinas registradas</button>
+                                        <button type="button" class="btn btn-info">Actualizar información de medicinas registradas</button>
+                                        <button type="button" class="btn btn-danger">Eliminar información de medicina registrada</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </body>
+            <script>
+                $(document).on('click', '.card-medicina', function () {
+                    $(".card").removeClass("selected-card");
+                    $(this).addClass("selected-card");
+
+                    $(".medicina-tool").css("display", "block");
+                });
+
+                $(document).on('click', '.card-agenda', function () {
+                    $(".card").removeClass("selected-card");
+                    $(this).addClass("selected-card");
+
+                    $(".medicina-tool").css("display", "none");
+
+                });
+
+                $(document).on('click', '.card-calendario', function () {
+                    $(".card").removeClass("selected-card");
+                    $(this).addClass("selected-card");
+
+                    $(".medicina-tool").css("display", "none");
+                });
+
+            </script>
+
+            </html>

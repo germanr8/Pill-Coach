@@ -3,23 +3,23 @@ var express = require("express");
 var connection = require('./../config');
 // cryptr = new Cryptr('myTotalySecretKey');
 
-module.exports.registro = function (req, res) {
-    var today = new Date();
-    var passwordEncryptada = cryptr.encrypt(req.body.password);
-    var user = {
+module.exports.registrar = function (req, res) {
+    var passwordEncriptada = cryptr.encrypt(req.body.password);
+    var usuario = {
         "username": req.body.usuario,
         "name": req.body.nombre,
         "fecha_Nacimiento": req.body.fecha_nacimiento,
         "email": req.body.correo,
-        "contrasenia": passwordEncryptada,
+        "contrasenia": passwordEncriptada,
         "pais": req.body.pais,
-        "paciente": null,
+        "paciente": req.body.tipo_usuario,
     }
-    connection.query('INSERT INTO user SET ?', user, function (error, results, fields) {
+
+    connection.query('INSERT INTO user SET ?', [usuario], function (error, results, fields) {
         if (error) {
             res.json({
                 status: false,
-                message: 'Error en el query.'
+                message: 'Error en el query' + error
             })
         } else {
             res.json({

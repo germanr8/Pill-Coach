@@ -24,7 +24,7 @@ body, html{
 }
 
 .bg-sign-in{
-    background-image: url("../img/patient-img2.jpg");
+    background-image: url("/img/patient-img2.jpg");
    height: 100%; 
    background-position: center;
    background-repeat: no-repeat;
@@ -32,7 +32,7 @@ body, html{
 }
 
 .bg-sign-up{
-   background-image: url("../img/patient-img.jpg");
+   background-image: url("/img/patient-img.jpg");
    height: 111%; 
    background-position: center;
    background-repeat: no-repeat;
@@ -58,7 +58,7 @@ body, html{
 
 .logo{
     margin-top: .7%;
-    background-image: url("../img/capsule.png");
+    background-image: url("/img/capsule.png");
     background-size: cover;
     height: 45px;
     width: 45px;
@@ -78,12 +78,21 @@ body, html{
 /**********************************/
 .dashboard-p .card{
     cursor: pointer;
+    
 }
 
-.dashboard-p .card:hover{
+.dashboard-p .card .card-title{
+    /*word-break: break-all;*/
+}
+
+.dashboard-p .card:hover, .dashboard-p .selected-card{
     cursor: pointer;
     background-color: #e5e5e5;
     color: #28a745;
+}
+
+.dashboard-p .selected-card{
+text-decoration: underline;
 }
 
 .dashboard-p .card-group{
@@ -94,7 +103,7 @@ body, html{
     display: block;
     margin: auto;
     width: 70%;
-    height: 70%;
+    height: auto;
 }
 
 .dashboard-p .card-body{
@@ -110,5 +119,22 @@ body, html{
 .bg-dashboard-p{
     background-color: whitesmoke;
 }
+
+.medicina-options{
+    display: flex;
+    width: 80%;
+    text-align: center;
+    margin: auto;
+}
+
+.medicina-options .btn{
+    margin-bottom: 4%;
+    
+}
+
+.medicina-tool{
+    display: none;
+}
+
 
 /**********************************/

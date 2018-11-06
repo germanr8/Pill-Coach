@@ -5,35 +5,35 @@ var connection = require('./../config');
 
 module.exports.autenticar = function (req, res) {
     var usuario = req.body.usuario;
-    var password = req.body.password;
+    var passwordEncriptada = cryptr.encrypt(req.body.password);
 
 
     connection.query('SELECT * FROM user WHERE username = ?', [usuario], function (error, results, fields) {
         if (error) {
-            res.json({
+            res.render('index.ejs', {
                 status: false,
-                message: 'Error en el query.'
-            })
+                message: "Error en el query" + error
+            });
         } else {
             if (results.length > 0) {
-                decryptedString = cryptr.decrypt(results[0].password);
-                if (password == decryptedString) {
-                    res.json({
+                if (cryptr.decrypt(passwordEncriptada) == cryptr.decrypt(results[0].contrasenia)) {
+                    res.render('dashboard-paciente.ejs', {
                         status: true,
-                        message: 'Autenticación exitosa.'
-                    })
+                        user: results[0].username,
+                        nombre: results[0].name
+                    });
                 } else {
-                    res.json({
+                    res.render('index.ejs', {
                         status: false,
-                        message: "Email y contraseña no son correctas."
+                        message: "Usuario y contraseña no coinciden"
                     });
                 }
 
             }
             else {
-                res.json({
+                res.render('index.ejs', {
                     status: false,
-                    message: "Email no existe."
+                    message: "Usuario no existe"
                 });
             }
         }
