@@ -1,0 +1,84 @@
+<% include partials/header.ejs %>
+    <% var user %>
+        <% var titulo %>
+            <% var listaMedicinas %>
+
+                <body class="bg-success" style="padding-bottom: 50px">
+                    <input name="current_user" id="current_user" type="hidden" value="<%= user %>">
+                    <div class="container header-app">
+
+                        <div class="container-fluid header">
+                            <div class="logo"></div>
+                            <h1 class="text-center pill-coach-text">Pill Coach</h1>
+                            <h1 class="text-white">
+                                <%= titulo %>
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="bg-dashboard-p dashboard-p">
+                        <hr>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-2">
+                                    <div class="card-group">
+                                        <div class="card card-medicina selected-card">
+                                            <img class="card-img-top" src="/img/medicina.png" alt="Card image cap">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Medicina</h5>
+                                            </div>
+                                        </div>
+                                        <div class="card card-agenda">
+                                            <img class="card-img-top" src="/img/agenda.png" alt="Card image cap">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Agenda del día</h5>
+                                            </div>
+                                        </div>
+                                        <div class="card card-calendario">
+                                            <img class="card-img-top" src="/img/calendario.png" alt="Card image cap">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Calendario</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col display-tool">
+                                    <div cass="lista-medicinas-wrapper">
+                                        <p>
+                                            <%= listaMedicinas.length %>
+                                        </p>
+                                        <% if (listaMedicinas.length > 0) {%>
+                                            <p class="text-info"> hay medicinas registradas. </p>
+                                            <% listaMedicinas.forEach((medicina, index) => { %>
+                                                <div class="card" style="width: 18rem;">
+                                                    <img class="card-img-top" src="..." alt="Card image cap">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">
+                                                            <%= medicina.nombre %>
+                                                        </h5>
+                                                        <p class="card-text">Some quick example text to build on the card title and make up the
+                                                            bulk of the card's content.</p>
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">Cras justo odio</li>
+                                                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                                                        <li class="list-group-item">Vestibulum at eros</li>
+                                                    </ul>
+                                                    <div class="card-body">
+                                                        <a href="#" class="card-link">Card link</a>
+                                                        <a href="#" class="card-link">Another link</a>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <% }) %>
+
+                                                    <% } else { %>
+                                                        <p class="text-info"> No hay medicinas registradas. </p>
+                                                        <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </body>
+                <% include partials/scripts-section-paciente.ejs %>

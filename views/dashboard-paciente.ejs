@@ -3,7 +3,11 @@
         <% var nombre %>
 
             <body class="bg-success" style="padding-bottom: 50px">
+
+
                 <input name="current_user" id="current_user" type="hidden" value="<%= user %>">
+
+
                 <div class="container header-app">
 
                     <div class="container-fluid header">
@@ -54,29 +58,4 @@
                         </div>
                     </div>
             </body>
-            <script>
-                $(document).on('click', '.card-medicina', function () {
-                    $(".card").removeClass("selected-card");
-                    $(this).addClass("selected-card");
-
-                    $(".medicina-tool").css("display", "block");
-                });
-
-                $(document).on('click', '.card-agenda', function () {
-                    $(".card").removeClass("selected-card");
-                    $(this).addClass("selected-card");
-
-                    $(".medicina-tool").css("display", "none");
-
-                });
-
-                $(document).on('click', '.card-calendario', function () {
-                    $(".card").removeClass("selected-card");
-                    $(this).addClass("selected-card");
-
-                    $(".medicina-tool").css("display", "none");
-                });
-
-            </script>
-
-            </html>
+            <% include partials/scripts-section-paciente.ejs %>

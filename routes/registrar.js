@@ -15,18 +15,25 @@ module.exports.registrar = function (req, res) {
         "paciente": req.body.tipo_usuario,
     }
 
-    connection.query('INSERT INTO user SET ?', [usuario], function (error, results, fields) {
+    connection.query('SELECT * FROM user WHERE username = ? OR email = ?', [req.body.usuario, req.body.correo], function (error, results, fields) {
         if (error) {
-            res.json({
+            return res.status(500).send(error);
+        } else if (results.length > 0) {
+            res.render('sign-up.ejs', {
                 status: false,
-                message: 'Error en el query' + error
-            })
+                message: "El nombre de usuario o el correo ya existen. Intente con otros porfavor."
+            });
         } else {
-            res.json({
-                status: true,
-                data: results,
-                message: 'Usuario registrado exitosamente.'
-            })
+            connection.query('INSERT INTO user SET ?', [usuario], function (error, results, fields) {
+                if (error) {
+                    return res.status(500).send(error);
+                } else {
+                    res.render('sign-up.ejs', {
+                        status: true,
+                        message: "Usuario registrado exitosamente. Puede iniciar sesión."
+                    });
+                }
+            });
         }
     });
 }

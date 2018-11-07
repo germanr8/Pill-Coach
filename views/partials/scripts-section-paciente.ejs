@@ -1,0 +1,27 @@
+<script>
+    $(document).on('click', '.card-medicina', function () {
+        $(".card").removeClass("selected-card");
+        $(this).addClass("selected-card");
+
+
+        window.location.replace('/medicine-list');
+    });
+
+    $(document).on('click', '.card-agenda', function () {
+        $(".card").removeClass("selected-card");
+        $(this).addClass("selected-card");
+
+        $(".medicina-tool").css("display", "none");
+
+    });
+
+    $(document).on('click', '.card-calendario', function () {
+        $(".card").removeClass("selected-card");
+        $(this).addClass("selected.-card");
+
+        $(".medicina-tool").css("display", "none");
+    });
+
+</script>
+
+</html>
