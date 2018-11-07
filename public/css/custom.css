@@ -2,139 +2,166 @@
 /*            CSS GENERAL                */
 /****************************************/
 
-body{
-    /*font-family: 'Lato', sans-serif;*/
+body {
+  /*font-family: 'Lato', sans-serif;*/
 }
 
 /******************************************/
 /* CSS para interfaz de login y registro */
 /****************************************/
 
-.login-btn{
-    width: 45%;
-    margin: 0 auto;
+.login-btn {
+  width: 45%;
+  margin: 0 auto;
 }
 
-.login-container{
-    text-align: center;
+.login-container {
+  text-align: center;
 }
 
-body, html{
-    height: 100%;
+body,
+html {
+  height: 100%;
 }
 
-.bg-sign-in{
-    background-image: url("/img/patient-img2.jpg");
-   height: 100%; 
-   background-position: center;
-   background-repeat: no-repeat;
-   background-size: cover;
+.bg-sign-in {
+  background-image: url('/img/patient-img2.jpg');
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.bg-sign-up{
-   background-image: url("/img/patient-img.jpg");
-   height: 111%; 
-   background-position: center;
-   background-repeat: no-repeat;
-   background-size: cover;
+.bg-sign-up {
+  background-image: url('/img/patient-img.jpg');
+  height: 111%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.bloque-sign{
-    width: 55%;
-    margin-top: 0;
-    opacity: 0.95;
-    filter: alpha(opacity=95); /* For IE8 and earlier */
+.bloque-sign {
+  width: 55%;
+  margin-top: 0;
+  opacity: 0.95;
+  filter: alpha(opacity=95); /* For IE8 and earlier */
 }
 
-.header{
-    margin-top: .7%;
-    text-align:center;
+.header {
+  margin-top: 0.7%;
+  text-align: center;
 }
 
-.pill-coach-text{
-    color: white;
-    display: inline-block;
+.pill-coach-text {
+  color: white;
+  display: inline-block;
 }
 
-.logo{
-    margin-top: .7%;
-    background-image: url("/img/capsule.png");
-    background-size: cover;
-    height: 45px;
-    width: 45px;
-    display: inline-block;
-    
+.logo {
+  margin-top: 0.7%;
+  background-image: url('/img/capsule.png');
+  background-size: cover;
+  height: 45px;
+  width: 45px;
+  display: inline-block;
 }
 
 /* Responsive */
-@media (max-width:575px){
-    .bloque-sign{
-        width: 80%;
-    }
+@media (max-width: 575px) {
+  .bloque-sign {
+    width: 80%;
+  }
 }
 
 /************************************/
 /* CSS para dashboard del paciente */
 /**********************************/
-.dashboard-p .card{
-    cursor: pointer;
-    
+.dashboard-p .button-card {
+  cursor: pointer;
 }
 
-.dashboard-p .card .card-title{
-    /*word-break: break-all;*/
+.dashboard-p {
+  height: 100%;
 }
 
-.dashboard-p .card:hover, .dashboard-p .selected-card{
-    cursor: pointer;
-    background-color: #e5e5e5;
-    color: #28a745;
+.dashboard-p .card .card-title {
+  /*word-break: break-all;*/
 }
 
-.dashboard-p .selected-card{
-text-decoration: underline;
+.dashboard-p .button-card:hover,
+.dashboard-p .selected-card {
+  cursor: pointer;
+  background-color: #e5e5e5;
+  color: #28a745;
 }
 
-.dashboard-p .card-group{
-    display: block;
+.dashboard-p .selected-card {
+  text-decoration: underline;
+}
+
+.dashboard-p .button-card-group {
+  display: block;
 }
 
 .dashboard-p .card-img-top {
-    display: block;
-    margin: auto;
-    width: 70%;
-    height: auto;
+  display: block;
+  margin: auto;
+  width: 70%;
+  height: auto;
 }
 
-.dashboard-p .card-body{
-    display: block;
-    margin: auto;
-    text-align: center;
+.dashboard-p .button-card .card-body {
+  display: block;
+  margin: auto;
+  text-align: center;
 }
 
-.dashboard-p .container{
-    margin: 0px 0px 0px 0px;
+.dashboard-p .container {
+  margin: 0px 0px 0px 0px;
 }
 
-.bg-dashboard-p{
-    background-color: whitesmoke;
+.bg-dashboard-p {
+  background-color: whitesmoke;
 }
 
-.medicina-options{
-    display: flex;
-    width: 80%;
-    text-align: center;
-    margin: auto;
+.medicina-options {
+  display: flex;
+  width: 80%;
+  text-align: center;
+  margin: auto;
 }
 
-.medicina-options .btn{
-    margin-bottom: 4%;
-    
+.medicina-options .btn {
+  margin-bottom: 4%;
 }
 
-.medicina-tool{
-    display: none;
+.medicina-tool {
+  display: none;
 }
 
+.display-tool {
+  height: 100%;
+}
 
-/**********************************/
+/*********************************/
+/* CSS para modulo de medicinas */
+/*******************************/
+.lista-medicinas-wrapper .medicina-individual {
+  text-align: center;
+  display: inline-block;
+  margin: 0.5% 0.5% 3% 0.5%;
+}
+
+.lista-medicinas-wrapper {
+  text-align: center;
+}
+
+.add-symbol {
+  display: inline-block;
+  background-image: url('/img/add-symbol2.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 80px;
+  width: 80px;
+}

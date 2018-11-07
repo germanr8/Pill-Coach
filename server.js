@@ -7,7 +7,12 @@ const app = express();
 
 const { getHomePage } = require('./routes/index');
 const { getSignupPage } = require('./routes/sign-up');
-const { loadMedicina } = require('./routes/medicina');
+const {
+  loadMedicina,
+  aniadirMedicina,
+  eliminarMedicina,
+  editarMedicina
+} = require('./routes/medicina');
 
 // CREAR LA CONEXIÓN DE LA BASE DE DATOS
 const connection = require('./config');
@@ -47,6 +52,8 @@ app.use(function(req, res, next) {
 app.get('/', getHomePage);
 app.get('/sign-up', getSignupPage);
 app.get('/medicine-list', loadMedicina);
+app.get('/edit/:id', editarMedicina);
+app.get('/delete/:id', eliminarMedicina);
 
 //******************* MANEJAR ACCIONES DE LOS POSTS (FORMS)
 var autenticacion = require('./routes/autenticar');

@@ -1,84 +1,100 @@
 <% include partials/header.ejs %>
-    <% var user %>
-        <% var titulo %>
-            <% var listaMedicinas %>
+<% var titulo %>
+<% var listaMedicinas %>
 
-                <body class="bg-success" style="padding-bottom: 50px">
-                    <input name="current_user" id="current_user" type="hidden" value="<%= user %>">
-                    <div class="container header-app">
+    <body class="bg-success" style="padding-bottom: 50px">
+        <div class="container header-app">
 
-                        <div class="container-fluid header">
-                            <div class="logo"></div>
-                            <h1 class="text-center pill-coach-text">Pill Coach</h1>
-                            <h1 class="text-white">
-                                <%= titulo %>
-                            </h1>
-                        </div>
-                    </div>
-                    <div class="bg-dashboard-p dashboard-p">
-                        <hr>
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-2">
-                                    <div class="card-group">
-                                        <div class="card card-medicina selected-card">
-                                            <img class="card-img-top" src="/img/medicina.png" alt="Card image cap">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Medicina</h5>
-                                            </div>
-                                        </div>
-                                        <div class="card card-agenda">
-                                            <img class="card-img-top" src="/img/agenda.png" alt="Card image cap">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Agenda del día</h5>
-                                            </div>
-                                        </div>
-                                        <div class="card card-calendario">
-                                            <img class="card-img-top" src="/img/calendario.png" alt="Card image cap">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Calendario</h5>
-                                            </div>
-                                        </div>
+            <div class="container-fluid header">
+                <div class="logo"></div>
+                <h1 class="text-center pill-coach-text">Pill Coach</h1>
+                <h1 class="text-white text-uppercase">
+                        <span class="badge badge-light"><%= titulo %></span>
+                </h1>
+            </div>
+        </div>
+        <div class="bg-dashboard-p dashboard-p">
+            <hr>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-2">
+                            <div class="card-group button-card-group">
+                                <div class="card card-medicina button-card selected-card">
+                                    <img class="card-img-top" src="/img/medicina.png" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Medicina</h5>
                                     </div>
                                 </div>
-                                <div class="col display-tool">
-                                    <div cass="lista-medicinas-wrapper">
-                                        <p>
-                                            <%= listaMedicinas.length %>
-                                        </p>
-                                        <% if (listaMedicinas.length > 0) {%>
-                                            <p class="text-info"> hay medicinas registradas. </p>
-                                            <% listaMedicinas.forEach((medicina, index) => { %>
-                                                <div class="card" style="width: 18rem;">
-                                                    <img class="card-img-top" src="..." alt="Card image cap">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">
-                                                            <%= medicina.nombre %>
-                                                        </h5>
-                                                        <p class="card-text">Some quick example text to build on the card title and make up the
-                                                            bulk of the card's content.</p>
-                                                    </div>
-                                                    <ul class="list-group list-group-flush">
-                                                        <li class="list-group-item">Cras justo odio</li>
-                                                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                                                        <li class="list-group-item">Vestibulum at eros</li>
-                                                    </ul>
-                                                    <div class="card-body">
-                                                        <a href="#" class="card-link">Card link</a>
-                                                        <a href="#" class="card-link">Another link</a>
-                                                    </div>
-                                                </div>
-
-
-
-                                                <% }) %>
-
-                                                    <% } else { %>
-                                                        <p class="text-info"> No hay medicinas registradas. </p>
-                                                        <% } %>
+                                <div class="card card-agenda button-card">
+                                    <img class="card-img-top" src="/img/agenda.png" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Agenda del día</h5>
+                                    </div>
+                                </div>
+                                <div class="card card-calendario button-card">
+                                    <img class="card-img-top" src="/img/calendario.png" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Calendario</h5>
                                     </div>
                                 </div>
                             </div>
+                    </div>
+                    <div class="col display-tool bg-white border border-secondary">
+                        <p class="font-weight-normal text-info">Lista de medicinas registradas:</p>
+
+                        <div class="lista-medicinas-wrapper">
+                            <% if (listaMedicinas.length > 0) {%>
+                                <% listaMedicinas.forEach((medicina, index) => { %>
+                                <div class="card medicina-individual" style="width: 18rem;">
+                                    <img class="card-img-top" src="..." alt="Placeholder imágen">
+                                    <div class="card-body">
+                                        <h5 class="card-title font-weight-bold"><%= medicina.nombreMedicina %></h5>
+                                        <h6 class="card-subtitle mb-2 text-muted"><%= medicina.nombrePresentacion %></h6>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Tomar cada  
+                                            <span class="badge badge-primary badge-pill"><%= medicina.frecuenciaHoraDosis %> Horas</span>,
+                                            por <span class="badge badge-primary badge-pill"><%= medicina.diasDosis %> día(s)</span></li>
+                                        <% if (medicina.nombrePresentacion == 'jarabe') {%>
+                                            <li class="list-group-item">Tomar dosis de 
+                                                <span class="badge badge-primary badge-pill"><%= medicina.cantidadConsumo %> ml</span>
+                                            </li>
+                                        <% } else { %>
+                                            <li class="list-group-item">Tomar dosis de 
+                                                <span class="badge badge-primary badge-pill"><%= medicina.tabletasConsumo %> mg</span>
+                                            </li>
+                                        <% } %>
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="/edit/<%= medicina.id_Medicina%>" class="btn btn-success">Editar</a>
+                                        <a href="/delete/<%= medicina.id_Medicina%>" class="btn btn-danger">Eliminar</a>
+                                    </div>
+
+                                    <div class="card-footer bg-primary border-black text-white">
+                                        <% if (medicina.nombrePresentacion == 'jarabe') {%>
+                                            Frasco de <span class="badge badge-light badge-pill"><%= medicina.gramosTotales %> ml</span>
+                                        <% } else { %>
+                                            Caja de
+                                            <span class="badge badge-light badge-pill"><%= medicina.cantidadDePresentacion %> <%= medicina.nombrePresentacion %>(s)</span>,
+                                            cada una de <span class="badge badge-light badge-pill"> <%= medicina.gramosPorPresentacion %> mg</span>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <% }) %>
+                            <% } else { %>
+                                <p class="font-weight-normal text-warning"> No hay medicinas registradas. </p>
+                                
+                            <% } %>
+                            <div class="card medicina-individual add-medicine-card" style="width: 18rem;">
+                                    <h5 class="card-header font-weight-bold">Añadir nueva medicina</h5>
+                                <div class="card-body">
+                                        <a href="add-medicine" class="add-symbol"></a>
+                                </div>
+                            </div>
+
                         </div>
-                </body>
-                <% include partials/scripts-section-paciente.ejs %>
+                    </div>
+                </div>
+            </div>
+    </body>
+    <% include partials/scripts-section-paciente.ejs %>

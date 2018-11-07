@@ -24,8 +24,7 @@ module.exports.autenticar = function(req, res) {
 
           res.render('dashboard-paciente.ejs', {
             status: true,
-            user: results[0].username,
-            nombre: results[0].name
+            nombre: results[0].nombre_completo
           });
         } else {
           res.render('index.ejs', {
