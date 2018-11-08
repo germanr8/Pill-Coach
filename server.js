@@ -8,12 +8,14 @@ const app = express();
 const { getHomePage } = require('./routes/index');
 const { getSignupPage } = require('./routes/sign-up');
 const {
+  loadRegistroMedicina,
   loadMedicina,
-  aniadirMedicina,
+  agregarMedicina,
   eliminarMedicina,
   editarMedicina
 } = require('./routes/medicina');
 
+//const agregarMedicina = require('./routes/medicina');
 // CREAR LA CONEXIÓN DE LA BASE DE DATOS
 const connection = require('./config');
 
@@ -52,15 +54,18 @@ app.use(function(req, res, next) {
 app.get('/', getHomePage);
 app.get('/sign-up', getSignupPage);
 app.get('/medicine-list', loadMedicina);
-app.get('/edit/:id', editarMedicina);
-app.get('/delete/:id', eliminarMedicina);
+app.get('/medicine-list/edit/:id', editarMedicina);
+app.get('/medicine-list/delete/:id', eliminarMedicina);
+app.get('/medicine-list/medicine-registry', loadRegistroMedicina);
 
 //******************* MANEJAR ACCIONES DE LOS POSTS (FORMS)
-var autenticacion = require('./routes/autenticar');
-var registro = require('./routes/registrar');
+const autenticacion = require('./routes/autenticar');
+const registro = require('./routes/registrar');
 
-app.post('/routes/autenticar', autenticacion.autenticar);
-app.post('/routes/registrar', registro.registrar);
+app.post('/authenticate', autenticacion.autenticar);
+app.post('/register', registro.registrar);
+app.post('/medicine-list/add', agregarMedicina);
+app.post('/medicine-list/modify', editarMedicina);
 
 // La aplicación escuchara al puerto establecido
 app.listen(port, () => {

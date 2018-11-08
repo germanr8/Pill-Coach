@@ -1,0 +1,213 @@
+<% include partials/header.ejs %> <% var titulo %> <% var tipos %>
+
+<body class="bg-success" style="padding-bottom: 50px">
+  <div class="container header-app">
+    <div class="container-fluid header">
+      <div class="logo"></div>
+      <h1 class="text-center pill-coach-text">Pill Coach</h1>
+      <h1 class="text-white text-uppercase">
+        <span class="badge badge-light"><%= titulo %></span>
+      </h1>
+    </div>
+  </div>
+  <div class="bg-dashboard-p dashboard-p">
+    <hr />
+    <div class="container-fluid">
+      <div class="row dashboard-row">
+        <div class="col-sm-1 col-xs-1 buttons-column">
+          <div class="card-group button-card-group">
+            <div class="card card-medicina button-card selected-card">
+              <img
+                class="card-img-top"
+                src="/img/medicina.png"
+                alt="Card image cap"
+              />
+              <div class="card-body"><h5 class="card-title">Medicina</h5></div>
+            </div>
+            <div class="card card-agenda button-card">
+              <img
+                class="card-img-top"
+                src="/img/agenda.png"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Agenda del día</h5>
+              </div>
+            </div>
+            <div class="card card-calendario button-card">
+              <img
+                class="card-img-top"
+                src="/img/calendario.png"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Calendario</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col display-tool bg-white border border-secondary">
+          <form
+            class="container-fluid text-center"
+            action="/medicine-list/add"
+            method="POST"
+          >
+            <div>
+              <p class="font-weight-bold text-info" style="margin-top: 1%;">
+                Instrucciones: llene el siguiente formulario de registro de
+                medicina y receta
+              </p>
+            </div>
+            <div>
+              <p class="font-weight-bold text-center" style="margin-top: 1%;">
+                Los siguientes campos son del empaque de su medicina.
+              </p>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>Nombre de medicina</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombre_medicina"
+                  name="nombre_medicina"
+                  placeholder="ejemplo: Histiacil"
+                  required
+                />
+              </div>
+              <div class="form-group col-md-6">
+                <label>Tipo de medicamento</label>
+                <select
+                  id="tipo_medicina"
+                  name="tipo_medicina"
+                  class="form-control"
+                  required
+                >
+                  <% tipos.forEach((tipo, index) => { %>
+
+                  <option value="<%= tipo.id_Presentacion %>"
+                    ><%= tipo.nombrePresentacion %></option
+                  >
+                  <% }) %>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label class="total_ml"
+                  >mL (mililitros) totales del frasco</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="total_ml"
+                  name="total_ml"
+                  placeholder="ej: 150"
+                  required
+                />
+              </div>
+              <div class="form-group col-md-6">
+                <label class="mg_individual"
+                  >mg (miligramos) por pastilla</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="mg_individual"
+                  name="mg_individual"
+                  placeholder="ej: 50"
+                  required
+                />
+              </div>
+
+              <div class="form-group col-md-6">
+                <label class="numero_tabletas"
+                  ># total de pastillas en el empaque</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="numero_tabletas"
+                  name="numero_tabletas"
+                  placeholder="ej: 50"
+                  required
+                />
+              </div>
+            </div>
+
+            <div>
+              <p class="font-weight-bold text-center" style="margin-top: 1%;">
+                Los siguientes campos son de su receta.
+              </p>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label class="consumir_tabletas"
+                  ># de unidades a consumir</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="consumir_tabletas"
+                  name="consumir_tabletas"
+                  placeholder="ej: 3"
+                  required
+                />
+              </div>
+              <div class="form-group col-md-12">
+                <label class="consumir_ml">Cantidad a consumir (en mL)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="consumir_ml"
+                  name="consumir_ml"
+                  placeholder="ej: 15"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label
+                  >¿Por cuantos días se tomará el medicamento? (en días)</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="dias_receta"
+                  name="dias_receta"
+                  placeholder="ej: 14"
+                  required
+                />
+              </div>
+              <div class="form-group col-md-6">
+                <label>¿Cada cuanto se tomará? (en horas)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="horas_receta"
+                  name="horas_receta"
+                  placeholder="ej: 12"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-row text-center">
+              <div class="form-group col-md-12">
+                <a
+                  class="btn btn-danger"
+                  href="/medicine-list"
+                  style="color: #fff;"
+                  >Cancelar</a
+                >
+                <button class="btn btn-primary" type="submit">Editar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<% include partials/scripts-section-paciente.ejs %>

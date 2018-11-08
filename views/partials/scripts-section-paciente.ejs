@@ -22,6 +22,115 @@
         $(".medicina-tool").css("display", "none");
     });
 
+    $( document ).ready(function() {
+        var checkid2 = $('#tipo_medicina').val();
+
+        if(checkid2 == 1 ){ // Manejar los medicamentos que son liquidos (es su id)
+            $('#mg_individual').hide();
+            $('.mg_individual').hide();
+            $('#numero_tabletas').hide();
+            $('.numero_tabletas').hide();
+            $('#consumir_tabletas').hide();
+            $('.consumir_tabletas').hide();
+
+            $('#mg_individual').prop('required', false);
+            $('#numero_tabletas').prop('required', false);
+            $('#consumir_tabletas').prop('required', false);
+
+            $('#mg_individual').val('');
+            $('#numero_tabletas').val('');
+            $('#consumir_tabletas').val('');
+
+            $('#total_ml').show();
+            $('.total_ml').show();
+            $('#consumir_ml').show();
+            $('.consumir_ml').show();
+            
+            $('#total_ml').prop('required', true);
+            $('#consumir_ml').prop('required', true);
+            
+        } else{
+            $('#mg_individual').show();
+            $('.mg_individual').show();
+            $('#numero_tabletas').show();
+            $('.numero_tabletas').show();
+            $('#consumir_tabletas').show();
+            $('.consumir_tabletas').show();
+
+            $('#mg_individual').prop('required', true);
+            $('#numero_tabletas').prop('required', true);
+            $('#consumir_tabletas').prop('required', true);
+
+
+            $('#total_ml').val('');
+            $('#consumir_ml').val('');
+
+            $('#total_ml').hide();
+            $('.total_ml').hide();
+            $('#consumir_ml').hide();
+            $('.consumir_ml').hide();         
+
+            $('#total_ml').prop('required', false);
+            $('#consumir_ml').prop('required', false);
+        }
+
+        $(document).on('click', '#tipo_medicina', function () {
+            var checkid1 = $('#tipo_medicina').val();
+
+            if(checkid1 == 1 ){ // Manejar los medicamentos que son liquidos (es su id)
+                $('#mg_individual').hide();
+                $('.mg_individual').hide();
+                $('#numero_tabletas').hide();
+                $('.numero_tabletas').hide();
+                $('#consumir_tabletas').hide();
+                $('.consumir_tabletas').hide();
+
+                $('#mg_individual').prop('required', false);
+                $('#numero_tabletas').prop('required', false);
+                $('#consumir_tabletas').prop('required', false);
+
+                $('#mg_individual').val('');
+                $('#numero_tabletas').val('');
+                $('#consumir_tabletas').val('');
+
+                $('#total_ml').show();
+                $('.total_ml').show();
+                $('#consumir_ml').show();
+                $('.consumir_ml').show();
+                
+                $('#total_ml').prop('required', true);
+                $('#consumir_ml').prop('required', true);
+            
+            } else{
+                $('#mg_individual').show();
+                $('.mg_individual').show();
+                $('#numero_tabletas').show();
+                $('.numero_tabletas').show();
+                $('#consumir_tabletas').show();
+                $('.consumir_tabletas').show();
+
+                $('#mg_individual').prop('required', true);
+                $('#numero_tabletas').prop('required', true);
+                $('#consumir_tabletas').prop('required', true);
+
+                $('#total_ml').val('');
+                $('#consumir_ml').val('');
+
+                $('#total_ml').hide();
+                $('.total_ml').hide();
+                $('#consumir_ml').hide();
+                $('.consumir_ml').hide();
+
+                $('#total_ml').prop('required', false);
+                $('#consumir_ml').prop('required', false);
+            
+            }
+        });
+
+        
+        
+    });
+
 </script>
 
 </html>

@@ -1,53 +1,44 @@
 <% include partials/header.ejs %>
         <% var nombre %>
 
-            <body class="bg-success" style="padding-bottom: 50px">
-                <div class="container header-app">
+        <body class="bg-success" style="padding-bottom: 50px">
+        <div class="container header-app">
 
-                    <div class="container-fluid header">
-                        <div class="logo"></div>
-                        <h1 class="text-center pill-coach-text">Pill Coach</h1>
-                        <h1 class="text-white">Hola, ¡<%= nombre %>!</h1>
-                    </div>
-                </div>
-                <div class="bg-dashboard-p dashboard-p">
-                    <hr>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-2">
-                                <div class="card-group button-card-group">
-                                    <div class="card card-medicina button-card">
-                                        <img class="card-img-top" src="/img/medicina.png" alt="Card image cap">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Medicina</h5>
-                                        </div>
-                                    </div>
-                                    <div class="card card-agenda button-card">
-                                        <img class="card-img-top" src="/img/agenda.png" alt="Card image cap">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Agenda del día</h5>
-                                        </div>
-                                    </div>
-                                    <div class="card card-calendario button-card">
-                                        <img class="card-img-top" src="/img/calendario.png" alt="Card image cap">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Calendario</h5>
-                                        </div>
-                                    </div>
+            <div class="container-fluid header">
+                <a href=""><div class="logo"></div></a>
+                <h1 class="text-center pill-coach-text">Pill Coach</h1>
+                <h1 class="text-white text-uppercase">
+                        <span class="badge badge-light">¡Hola, <%= nombre %>!</span>
+                </h1>
+            </div>
+        </div>
+        <div class="bg-dashboard-p dashboard-p">
+            <hr>
+            <div class="container-fluid">
+                <div class="row dashboard-row">
+                    <div class= "col-sm-1 col-xs-1 buttons-column">
+                        <div class="card-group button-card-group">
+                            <div class="card card-medicina button-card selected-card">
+                                <img class="card-img-top" src="/img/medicina.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Medicina</h5>
                                 </div>
                             </div>
-                            <div class="col display-tool">
-                                <div class="medicina-tool">
-                                    <p class="text-center font-weight-bold text-uppercase">Opciones de medicina</p>
-                                    <div class="btn-group-vertical option-set medicina-options">
-                                        <button type="button" class="btn btn-success">Registrar medicina</button>
-                                        <button type="button" class="btn btn-primary">Ver información de medicinas registradas</button>
-                                        <button type="button" class="btn btn-info">Actualizar información de medicinas registradas</button>
-                                        <button type="button" class="btn btn-danger">Eliminar información de medicina registrada</button>
-                                    </div>
+                            <div class="card card-agenda button-card">
+                                <img class="card-img-top" src="/img/agenda.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Agenda del día</h5>
+                                </div>
+                            </div>
+                            <div class="card card-calendario button-card">
+                                <img class="card-img-top" src="/img/calendario.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Calendario</h5>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col display-tool bg-white border border-secondary">
                     </div>
             </body>
             <% include partials/scripts-section-paciente.ejs %>

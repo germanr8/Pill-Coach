@@ -6,7 +6,7 @@
         <div class="container header-app">
 
             <div class="container-fluid header">
-                <div class="logo"></div>
+                <a href=""><div class="logo"></div></a>
                 <h1 class="text-center pill-coach-text">Pill Coach</h1>
                 <h1 class="text-white text-uppercase">
                         <span class="badge badge-light"><%= titulo %></span>
@@ -16,31 +16,30 @@
         <div class="bg-dashboard-p dashboard-p">
             <hr>
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-2">
-                            <div class="card-group button-card-group">
-                                <div class="card card-medicina button-card selected-card">
-                                    <img class="card-img-top" src="/img/medicina.png" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Medicina</h5>
-                                    </div>
-                                </div>
-                                <div class="card card-agenda button-card">
-                                    <img class="card-img-top" src="/img/agenda.png" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Agenda del día</h5>
-                                    </div>
-                                </div>
-                                <div class="card card-calendario button-card">
-                                    <img class="card-img-top" src="/img/calendario.png" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Calendario</h5>
-                                    </div>
+                <div class="row dashboard-row">
+                    <div class= "col-sm-1 col-xs-1 buttons-column">
+                        <div class="card-group button-card-group">
+                            <div class="card card-medicina button-card selected-card">
+                                <img class="card-img-top" src="/img/medicina.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Medicina</h5>
                                 </div>
                             </div>
+                            <div class="card card-agenda button-card">
+                                <img class="card-img-top" src="/img/agenda.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Agenda del día</h5>
+                                </div>
+                            </div>
+                            <div class="card card-calendario button-card">
+                                <img class="card-img-top" src="/img/calendario.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Calendario</h5>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col display-tool bg-white border border-secondary">
-                        <p class="font-weight-normal text-info">Lista de medicinas registradas:</p>
 
                         <div class="lista-medicinas-wrapper">
                             <% if (listaMedicinas.length > 0) {%>
@@ -66,8 +65,8 @@
                                         <% } %>
                                     </ul>
                                     <div class="card-body">
-                                        <a href="/edit/<%= medicina.id_Medicina%>" class="btn btn-success">Editar</a>
-                                        <a href="/delete/<%= medicina.id_Medicina%>" class="btn btn-danger">Eliminar</a>
+                                        <a href="/medicine-list/edit/<%= medicina.id_Medicina%>" class="btn btn-success">Editar</a>
+                                        <a href="/medicine-list/delete/<%= medicina.id_Medicina%>" class="btn btn-danger">Eliminar</a>
                                     </div>
 
                                     <div class="card-footer bg-primary border-black text-white">
@@ -88,7 +87,7 @@
                             <div class="card medicina-individual add-medicine-card" style="width: 18rem;">
                                     <h5 class="card-header font-weight-bold">Añadir nueva medicina</h5>
                                 <div class="card-body">
-                                        <a href="add-medicine" class="add-symbol"></a>
+                                        <a href="/medicine-list/medicine-registry" class="add-symbol"></a>
                                 </div>
                             </div>
 

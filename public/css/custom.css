@@ -101,6 +101,7 @@ html {
 
 .dashboard-p .button-card-group {
   display: block;
+  text-align: center;
 }
 
 .dashboard-p .card-img-top {
@@ -140,7 +141,15 @@ html {
 }
 
 .display-tool {
-  height: 100%;
+  height: auto;
+  margin-right: 1%;
+}
+
+.buttons-column {
+  max-width: none;
+}
+
+.buttons-column {
 }
 
 /*********************************/
@@ -164,4 +173,44 @@ html {
   background-position: center;
   height: 80px;
   width: 80px;
+}
+
+/* Responsive */
+@media (max-width: 575px) {
+  .button-card {
+    width: 32%;
+  }
+
+  .dashboard-p .button-card-group {
+    display: inline-block;
+  }
+
+  .button-card {
+    display: inline-flex;
+    min-height: 155px;
+  }
+
+  .button-card .card-body {
+    padding: 0;
+  }
+
+  .button-card h5 {
+    font-size: 16px;
+  }
+
+  .button-card .card-title {
+  }
+
+  .display-tool {
+    height: auto;
+    margin-right: 0.5%;
+    margin-left: 0.5%;
+  }
+}
+
+@media (max-width: 452px) {
+  .button-card {
+    display: inline-flex;
+    min-height: 120px;
+  }
 }
