@@ -177,7 +177,8 @@ module.exports = {
           'SELECT * ' +
           'FROM receta a ' +
           'INNER JOIN medicina b ON a.id_Medicina = b.id_Medicina ' +
-          'INNER JOIN presentacion_medicina c ON b.tipoMedicina  = c.id_Presentacion';
+          'INNER JOIN presentacion_medicina c ON b.tipoMedicina  = c.id_Presentacion ' +
+          'WHERE a.username_Paciente = ?';
 
         connection.query(query2, [current_user], function(
           error,
