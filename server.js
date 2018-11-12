@@ -12,7 +12,8 @@ const {
   loadMedicina,
   agregarMedicina,
   eliminarMedicina,
-  editarMedicina
+  editarMedicina,
+  loadEdicionMedicina
 } = require('./routes/medicina');
 
 //const agregarMedicina = require('./routes/medicina');
@@ -54,7 +55,7 @@ app.use(function(req, res, next) {
 app.get('/', getHomePage);
 app.get('/sign-up', getSignupPage);
 app.get('/medicine-list', loadMedicina);
-app.get('/medicine-list/edit/:id', editarMedicina);
+app.get('/medicine-list/edit/:id', loadEdicionMedicina);
 app.get('/medicine-list/delete/:id', eliminarMedicina);
 app.get('/medicine-list/medicine-registry', loadRegistroMedicina);
 
@@ -65,7 +66,7 @@ const registro = require('./routes/registrar');
 app.post('/authenticate', autenticacion.autenticar);
 app.post('/register', registro.registrar);
 app.post('/medicine-list/add', agregarMedicina);
-app.post('/medicine-list/modify', editarMedicina);
+app.post('/medicine-list/modify/:id', editarMedicina);
 
 // La aplicación escuchara al puerto establecido
 app.listen(port, () => {

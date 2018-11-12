@@ -48,7 +48,11 @@ medicina %> <% var selectedtype %>
           </div>
         </div>
         <div class="col display-tool bg-white border border-secondary">
-          <form class="container-fluid text-center" action="" method="POST">
+          <form
+            class="container-fluid text-center"
+            action="/medicine-list/modify/<%= medicina.id_Medicina %>"
+            method="POST"
+          >
             <div>
               <p class="font-weight-bold text-info" style="margin-top: 1%;">
                 Instrucciones: edite el siguiente formulario para editar la

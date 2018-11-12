@@ -72,15 +72,25 @@ module.exports = {
       cantidadDePresentacion: req.body.numero_tabletas
     };
 
-    connection.query('INSERT INTO medicina SET ?', medicina, function(
-      error,
-      result,
-      fields
-    ) {
+    // Manejando la transacción
+    connection.beginTransaction(function(error) {
       if (error) {
         return res.status(500).send(error);
-      } else {
-        insertedId = result.insertId;
+      }
+
+      connection.query('INSERT INTO medicina SET ?', medicina, function(
+        error,
+        results,
+        fields
+      ) {
+        if (error) {
+          connection.rollback(function() {
+            return res.status(500).send(error);
+          });
+        }
+
+        insertedId = results.insertId;
+
         var receta = {
           username_Paciente: req.session.userid,
           id_Medicina: insertedId,
@@ -92,20 +102,106 @@ module.exports = {
 
         connection.query('INSERT INTO receta SET ?', receta, function(
           error,
-          result,
+          results,
           fields
         ) {
           if (error) {
-            return res.status(500).send(error);
-          } else {
-            res.redirect('/medicine-list');
+            connection.rollback(function() {
+              return res.status(500).send(error);
+            });
           }
+          connection.commit(function(error) {
+            if (error) {
+              connection.rollback(function() {
+                return res.status(500).send(error);
+              });
+            }
+            // Success
+            res.redirect('/medicine-list');
+          });
         });
-      }
+      });
     });
   },
 
   editarMedicina: (req, res) => {
+    var totalNew;
+
+    if (req.body.total_ml == '' || req.body.total_ml == null) {
+      totalNew = req.body.numero_tabletas * req.body.mg_individual; // Calcular gramaje si son pastillas
+    } else {
+      totalNew = req.body.total_ml;
+    }
+
+    var medicina = {
+      nombreMedicina: req.body.nombre_medicina,
+      tipoMedicina: req.body.tipo_medicina,
+      gramosTotales: totalNew,
+      gramosPorPresentacion: req.body.mg_individual,
+      cantidadDePresentacion: req.body.numero_tabletas
+    };
+
+    console.log(req.params.id);
+
+    var idMedicinaElegida = req.params.id;
+    var updatedId;
+
+    // Manejando la transacción
+    connection.beginTransaction(function(error) {
+      if (error) {
+        return res.status(500).send(error);
+      }
+
+      query1 = 'UPDATE medicina SET ? WHERE id_Medicina=?';
+
+      connection.query(query1, [medicina, idMedicinaElegida], function(
+        error,
+        results,
+        fields
+      ) {
+        if (error) {
+          connection.rollback(function() {
+            return res.status(500).send(error);
+          });
+        } else {
+          updatedId = results.insertId;
+        }
+
+        var receta = {
+          username_Paciente: req.session.userid,
+          id_Medicina: updatedId,
+          cantidadConsumo: req.body.consumir_ml,
+          tabletasConsumo: req.body.consumir_tabletas,
+          frecuenciaHoraDosis: req.body.horas_receta,
+          diasDosis: req.body.dias_receta
+        };
+
+        connection.query(
+          'UPDATE receta SET ? WHERE id_Medicina=?',
+          [receta, updatedId],
+          function(error, results, fields) {
+            if (error) {
+              connection.rollback(function() {
+                return res.status(500).send(error);
+              });
+            }
+            connection.commit(function(error) {
+              if (error) {
+                connection.rollback(function() {
+                  return res.status(500).send(error);
+                });
+              }
+
+              // Success
+              res.redirect('/medicine-list');
+            });
+          }
+        );
+      });
+    });
+  },
+
+  loadEdicionMedicina: (req, res) => {
     function fetchMedicineTypes(callback) {
       var query0 =
         'SELECT id_Presentacion, nombrePresentacion ' +
@@ -142,8 +238,6 @@ module.exports = {
             return res.status(500).send(error);
           } else {
             listaMedicinas = results2;
-            console.log(medicinaSeleccionada);
-            console.log(listaMedicinas);
 
             res.render('edicion-medicina.ejs', {
               selectedtype: results[0].tipoMedicina,
