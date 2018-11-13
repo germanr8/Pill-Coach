@@ -4,6 +4,39 @@
 
 body {
   /*font-family: 'Lato', sans-serif;*/
+  background-color: whitesmoke;
+}
+
+.log-out-button {
+  margin-right: 1%;
+}
+
+.header-app {
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+.user-control {
+  text-align: center;
+  word-wrap: break-word;
+  font-size: 30px;
+}
+
+.user-buttons {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  padding-top: 1.5%;
+}
+
+@media (max-width: 452px) {
+  .user-control {
+    font-size: 20px;
+  }
+
+  .log-out-button {
+    font-size: 12.5px !important;
+  }
 }
 
 /******************************************/
@@ -30,19 +63,21 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  padding-top: 2%;
 }
 
 .bg-sign-up {
   background-image: url('/img/patient-img.jpg');
-  height: 111%;
+  height: 106%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  padding-top: 2%;
 }
 
 .bloque-sign {
   width: 55%;
-  margin-top: 0;
+
   opacity: 0.95;
   filter: alpha(opacity=95); /* For IE8 and earlier */
 }

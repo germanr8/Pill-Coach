@@ -2,16 +2,11 @@
 <% var titulo %>
 <% var listaMedicinas %>
 
-    <body class="bg-success" style="padding-bottom: 50px">
-        <div class="container header-app">
-
-            <div class="container-fluid header">
-                <a href=""><div class="logo"></div></a>
-                <h1 class="text-center pill-coach-text">Pill Coach</h1>
-                <h1 class="text-white text-uppercase">
-                        <span class="badge badge-light"><%= titulo %></span>
-                </h1>
-            </div>
+<div class="user-control text-white text-uppercase bg-primary">
+        <span class="badge badge-light"><%= titulo %></span>
+      </div>
+      <div class="user-buttons text-white text-uppercase bg-primary text-right">
+          <a href="/sign-out" class="d-inline-block btn btn-secondary border border-white log-out-button">Cerrar sesión</a>
         </div>
         <div class="bg-dashboard-p dashboard-p">
             <hr>
@@ -69,6 +64,10 @@
                                         <a href="/medicine-list/delete/<%= medicina.id_Medicina%>" class="btn btn-danger">Eliminar</a>
                                     </div>
 
+                                    <div class="bg-warning text-danger">
+                                        <span class="font-weight-bold">Notas y observaciones:</span> <%= medicina.notas %>
+                                    </div>
+
                                     <div class="card-footer bg-primary border-black text-white">
                                         <% if (medicina.nombrePresentacion == 'jarabe') {%>
                                             Frasco de <span class="badge badge-light badge-pill"><%= medicina.gramosTotales %> ml</span>
@@ -84,7 +83,7 @@
                                 <p class="font-weight-normal text-warning"> No hay medicinas registradas. </p>
                                 
                             <% } %>
-                            <div class="card medicina-individual add-medicine-card" style="width: 18rem;">
+                            <div class="card align-top medicina-individual add-medicine-card" style="width: 18rem;">
                                     <h5 class="card-header font-weight-bold">Añadir nueva medicina</h5>
                                 <div class="card-body">
                                         <a href="/medicine-list/medicine-registry" class="add-symbol"></a>

@@ -1,25 +1,26 @@
 <% include partials/header.ejs %>
-        <% var titulo %>
+<% var titulo %>
+<% var listaMedicinas %>
 
-        <div class="user-control text-white text-uppercase bg-primary">
-                <span class="badge badge-light"><%= titulo %></span>
-              </div>
-              <div class="user-buttons text-white text-uppercase bg-primary text-right">
-                  <a href="/sign-out" class="d-inline-block btn btn-secondary border border-white log-out-button">Cerrar sesión</a>
-                </div>
+<div class="user-control text-white text-uppercase bg-primary">
+        <span class="badge badge-light"><%= titulo %></span>
+      </div>
+      <div class="user-buttons text-white text-uppercase bg-primary text-right">
+          <a href="/sign-out" class="d-inline-block btn btn-secondary border border-white log-out-button">Cerrar sesión</a>
+        </div>
         <div class="bg-dashboard-p dashboard-p">
             <hr>
             <div class="container-fluid">
                 <div class="row dashboard-row">
                     <div class= "col-sm-1 col-xs-1 buttons-column">
                         <div class="card-group button-card-group">
-                            <div class="card card-medicina button-card selected-card">
+                            <div class="card card-medicina button-card">
                                 <img class="card-img-top" src="/img/medicina.png" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">Medicina</h5>
                                 </div>
                             </div>
-                            <div class="card card-agenda button-card">
+                            <div class="card card-agenda button-card selected-card">
                                 <img class="card-img-top" src="/img/agenda.png" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">Agenda del día</h5>
@@ -34,6 +35,13 @@
                         </div>
                     </div>
                     <div class="col display-tool bg-white border border-secondary">
+
+                        <div class="agenda-wrapper">
+                           
+
+                        </div>
                     </div>
-            </body>
-            <% include partials/scripts-section-paciente.ejs %>
+                </div>
+            </div>
+    </body>
+    <% include partials/scripts-section-paciente.ejs %>

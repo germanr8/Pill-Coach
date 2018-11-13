@@ -7,6 +7,7 @@ const app = express();
 
 const { getHomePage } = require('./routes/index');
 const { getSignupPage } = require('./routes/sign-up');
+const { closeSession } = require('./routes/sign-out');
 const {
   loadRegistroMedicina,
   loadMedicina,
@@ -15,8 +16,8 @@ const {
   editarMedicina,
   loadEdicionMedicina
 } = require('./routes/medicina');
+const { loadDailySchedule } = require('./routes/agenda');
 
-//const agregarMedicina = require('./routes/medicina');
 // CREAR LA CONEXIÓN DE LA BASE DE DATOS
 const connection = require('./config');
 
@@ -41,16 +42,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); // Se parsearán los datos de los 'forms'
 app.use(express.static(path.join(__dirname, 'public'))); // Para que Express use el folder 'public'
 
-app.use(function(req, res, next) {
-  res.locals = {
-    siteTitle: "My Website's Title",
-    pageTitle: 'The Home Page',
-    author: 'Cory Gross',
-    description: "My app's description"
-  };
-  next();
-});
-
 //******************* ROUTES PARA LA APLICACIÓN
 app.get('/', getHomePage);
 app.get('/sign-up', getSignupPage);
@@ -58,6 +49,8 @@ app.get('/medicine-list', loadMedicina);
 app.get('/medicine-list/edit/:id', loadEdicionMedicina);
 app.get('/medicine-list/delete/:id', eliminarMedicina);
 app.get('/medicine-list/medicine-registry', loadRegistroMedicina);
+app.get('/sign-out', closeSession);
+app.get('/daily-schedule', loadDailySchedule);
 
 //******************* MANEJAR ACCIONES DE LOS POSTS (FORMS)
 const autenticacion = require('./routes/autenticar');

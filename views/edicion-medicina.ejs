@@ -1,16 +1,12 @@
 <% include partials/header.ejs %> <% var titulo %> <% var tipos %> <% var
 medicina %> <% var selectedtype %>
 
-<body class="bg-success" style="padding-bottom: 50px">
-  <div class="container header-app">
-    <div class="container-fluid header">
-      <div class="logo"></div>
-      <h1 class="text-center pill-coach-text">Pill Coach</h1>
-      <h1 class="text-white text-uppercase">
-        <span class="badge badge-light"><%= titulo %></span>
-      </h1>
-    </div>
+<div class="user-control text-white text-uppercase bg-primary">
+    <span class="badge badge-light"><%= titulo %></span>
   </div>
+  <div class="user-buttons text-white text-uppercase bg-primary text-right">
+      <a href="/sign-out" class="d-inline-block btn btn-secondary border border-white log-out-button">Cerrar sesión</a>
+    </div>
   <div class="bg-dashboard-p dashboard-p">
     <hr />
     <div class="container-fluid">
@@ -201,6 +197,15 @@ medicina %> <% var selectedtype %>
                   value="<%= medicina.frecuenciaHoraDosis %>"
                   required
                 />
+              </div>
+              <div class="form-group col-md-12">
+                  <label>Notas u observaciones de la medicina o receta</label>
+                  <textarea
+                    type="text"
+                    class="form-control"
+                    id="notas_observaciones"
+                    name="notas_observaciones"
+                  ><%= medicina.notas %></textarea>
               </div>
             </div>
             <div class="form-row text-center">

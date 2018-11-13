@@ -11,15 +11,13 @@
         $(".card").removeClass("selected-card");
         $(this).addClass("selected-card");
 
-        $(".medicina-tool").css("display", "none");
+        window.location.replace('/daily-schedule');
 
     });
 
     $(document).on('click', '.card-calendario', function () {
         $(".card").removeClass("selected-card");
         $(this).addClass("selected.-card");
-
-        $(".medicina-tool").css("display", "none");
     });
 
     $( document ).ready(function() {

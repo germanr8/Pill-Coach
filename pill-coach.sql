@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2018 at 06:13 AM
+-- Generation Time: Nov 13, 2018 at 04:53 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -34,9 +34,19 @@ CREATE TABLE `medicina` (
   `tipoMedicina` int(11) DEFAULT NULL,
   `gramosTotales` int(11) DEFAULT NULL,
   `gramosPorPresentacion` int(11) DEFAULT NULL,
-  `cantidadDePresentacion` int(11) DEFAULT NULL
+  `cantidadDePresentacion` int(11) DEFAULT NULL,
+  `notas` text COLLATE utf8_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `medicina`
+--
+
+INSERT INTO `medicina` (`id_Medicina`, `nombreMedicina`, `tipoMedicina`, `gramosTotales`, `gramosPorPresentacion`, `cantidadDePresentacion`, `notas`) VALUES
+(19, 'as684dwa846', 2, 100, 10, 10, ' '),
+(23, '1', 1, 1, 0, 0, ' '),
+(24, 'Histiacil', 2, 50, 5, 10, ' '),
+(26, 'Histiacil', 2, 300, 15, 20, ' ');
 
 -- --------------------------------------------------------
 
@@ -77,6 +87,14 @@ CREATE TABLE `presentacion_medicina` (
   `forma` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `presentacion_medicina`
+--
+
+INSERT INTO `presentacion_medicina` (`id_Presentacion`, `nombrePresentacion`, `forma`) VALUES
+(1, 'jarabe', 'líquida'),
+(2, 'pastilla', 'ovalada'),
+(3, 'cápsula', 'ovalada');
 
 -- --------------------------------------------------------
 
@@ -94,6 +112,15 @@ CREATE TABLE `receta` (
   `diasDosis` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `receta`
+--
+
+INSERT INTO `receta` (`id_Receta`, `username_Paciente`, `id_Medicina`, `cantidadConsumo`, `tabletasConsumo`, `frecuenciaHoraDosis`, `diasDosis`) VALUES
+(15, 'Jj522', 19, 0, 1, 4, 4),
+(19, 'yairpv', 23, 1, 0, 1, 1),
+(20, 'yairpv', 24, 0, 1, 8, 8),
+(22, 'ypv12', 26, 0, 2, 8, 14);
 
 -- --------------------------------------------------------
 
@@ -111,6 +138,17 @@ CREATE TABLE `user` (
   `paciente` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`username`, `nombre_completo`, `fecha_Nacimiento`, `email`, `contrasenia`, `pais`, `paciente`) VALUES
+('admin', 'admin', '1111-11-11', 'admin@admin.admin', '926df286a53ca87d49e484e8e7', 'AZ', 1),
+('germanr8', 'Germán Reyes', '1998-04-20', 'german.reyga@gmail.com', '573292e13e7564efb6886c82332623794f', 'MX', 1),
+('Jj522', '1223', '1999-02-01', 'yairpv2129@gmail.com', '411dd74d87be9ed1efc0c3', 'MX', 1),
+('usuario', 'asa', '1992-04-20', '', 'afaa56f4a2dd79ad6afc5bb14de6c03453', 'MX', 1),
+('yairpv', 'Yair Pimentel', '0000-00-00', 'a@hotmail.com', '0aa68330582ae0d41bdf3d', 'MX', 1),
+('ypv12', 'Yair Pimentel', '1976-11-12', 'yair@gmail.com', 'a53427e95c469199a73ee8', 'MY', 1);
 
 --
 -- Indexes for dumped tables
@@ -166,7 +204,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `medicina`
 --
 ALTER TABLE `medicina`
-  MODIFY `id_Medicina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_Medicina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `notificaciones`
@@ -184,7 +222,7 @@ ALTER TABLE `presentacion_medicina`
 -- AUTO_INCREMENT for table `receta`
 --
 ALTER TABLE `receta`
-  MODIFY `id_Receta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_Receta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables

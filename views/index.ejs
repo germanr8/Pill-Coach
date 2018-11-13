@@ -1,16 +1,21 @@
-<% include partials/header.ejs %>
+
     <% var message %>
-
-        <body class="bg-primary" style="padding-bottom: 50px">
-            <div class="container header-app">
-
-                <div class="container-fluid header">
-                    <div class="logo"></div>
-                    <h1 class="text-center pill-coach-text">Pill Coach</h1>
-                </div>
-            </div>
-            <div class="bg-sign-in">
-                <hr>
+    <head>
+        <meta charset="utf-8" />
+        <title>Pill-Coach</title>
+        
+        <link rel="stylesheet" href="/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/css/custom.css" />
+        
+        <!-- Incluir jQuery -->
+        <script src="/js/jquery-3.1.1.min.js"></script>
+        </head>
+        <body class="sign-in-body" style="padding-bottom: 50px">
+        <div class="container-fluid header-app bg-primary">
+            <div class="logo"></div>
+            <h1 class="text-center pill-coach-text">Pill Coach</h1>
+        </div>
+         <div class="bg-sign-in">
                 <div class="container card bloque-sign">
                     <form class="container-fluid login-container" action="/authenticate" method="POST">
                         <br>
@@ -33,9 +38,7 @@
                         <p class="text-center text-danger">
                             <%= message %>
                         </p>
-                        <br> ¿No tiene una cuenta?
-
-
+                        ¿No tiene una cuenta?
                         <br>
                         <a href="sign-up">REGISTRARSE</a>
                     </form>

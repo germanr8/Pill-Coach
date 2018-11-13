@@ -69,7 +69,8 @@ module.exports = {
       tipoMedicina: req.body.tipo_medicina,
       gramosTotales: total,
       gramosPorPresentacion: req.body.mg_individual,
-      cantidadDePresentacion: req.body.numero_tabletas
+      cantidadDePresentacion: req.body.numero_tabletas,
+      notas: req.body.notas_observaciones
     };
 
     // Manejando la transacción
@@ -125,26 +126,31 @@ module.exports = {
   },
 
   editarMedicina: (req, res) => {
-    var totalNew;
+    var total;
 
     if (req.body.total_ml == '' || req.body.total_ml == null) {
-      totalNew = req.body.numero_tabletas * req.body.mg_individual; // Calcular gramaje si son pastillas
+      total = req.body.numero_tabletas * req.body.mg_individual; // Calcular gramaje si son pastillas
     } else {
-      totalNew = req.body.total_ml;
+      total = req.body.total_ml;
     }
 
     var medicina = {
       nombreMedicina: req.body.nombre_medicina,
       tipoMedicina: req.body.tipo_medicina,
-      gramosTotales: totalNew,
+      gramosTotales: total,
       gramosPorPresentacion: req.body.mg_individual,
-      cantidadDePresentacion: req.body.numero_tabletas
+      cantidadDePresentacion: req.body.numero_tabletas,
+      notas: req.body.notas_observaciones
     };
 
-    console.log(req.params.id);
+    var receta = {
+      cantidadConsumo: req.body.consumir_ml,
+      tabletasConsumo: req.body.consumir_tabletas,
+      frecuenciaHoraDosis: req.body.horas_receta,
+      diasDosis: req.body.dias_receta
+    };
 
     var idMedicinaElegida = req.params.id;
-    var updatedId;
 
     // Manejando la transacción
     connection.beginTransaction(function(error) {
@@ -163,40 +169,31 @@ module.exports = {
           connection.rollback(function() {
             return res.status(500).send(error);
           });
-        } else {
-          updatedId = results.insertId;
         }
 
-        var receta = {
-          username_Paciente: req.session.userid,
-          id_Medicina: updatedId,
-          cantidadConsumo: req.body.consumir_ml,
-          tabletasConsumo: req.body.consumir_tabletas,
-          frecuenciaHoraDosis: req.body.horas_receta,
-          diasDosis: req.body.dias_receta
-        };
+        query2 = 'UPDATE receta SET ? WHERE id_Medicina=?';
 
-        connection.query(
-          'UPDATE receta SET ? WHERE id_Medicina=?',
-          [receta, updatedId],
-          function(error, results, fields) {
+        connection.query(query2, [receta, idMedicinaElegida], function(
+          error,
+          results,
+          fields
+        ) {
+          if (error) {
+            connection.rollback(function() {
+              return res.status(500).send(error);
+            });
+          }
+          connection.commit(function(error) {
             if (error) {
               connection.rollback(function() {
                 return res.status(500).send(error);
               });
             }
-            connection.commit(function(error) {
-              if (error) {
-                connection.rollback(function() {
-                  return res.status(500).send(error);
-                });
-              }
-
-              // Success
-              res.redirect('/medicine-list');
-            });
-          }
-        );
+            console.log(results);
+            // Success
+            res.redirect('/medicine-list');
+          });
+        });
       });
     });
   },
