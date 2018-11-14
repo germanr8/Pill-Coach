@@ -98,7 +98,8 @@ module.exports = {
           cantidadConsumo: req.body.consumir_ml,
           tabletasConsumo: req.body.consumir_tabletas,
           frecuenciaHoraDosis: req.body.horas_receta,
-          diasDosis: req.body.dias_receta
+          diasDosis: req.body.dias_receta,
+          nombreDoctor: req.body.doctor
         };
 
         connection.query('INSERT INTO receta SET ?', receta, function(
@@ -147,7 +148,8 @@ module.exports = {
       cantidadConsumo: req.body.consumir_ml,
       tabletasConsumo: req.body.consumir_tabletas,
       frecuenciaHoraDosis: req.body.horas_receta,
-      diasDosis: req.body.dias_receta
+      diasDosis: req.body.dias_receta,
+      nombreDoctor: req.body.doctor
     };
 
     var idMedicinaElegida = req.params.id;

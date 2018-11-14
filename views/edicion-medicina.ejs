@@ -205,6 +205,16 @@ medicina %> <% var selectedtype %>
                 />
               </div>
               <div class="form-group col-md-12">
+                <label>Nombre del Doctor que le recetó la medicina</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="doctor"
+                  name="doctor"
+                  value="<%= medicina.nombreDoctor %>"
+                />
+              </div>
+              <div class="form-group col-md-12">
                   <label>Notas u observaciones de la medicina o receta</label>
                   <textarea
                     type="text"
@@ -213,6 +223,7 @@ medicina %> <% var selectedtype %>
                     name="notas_observaciones"
                   ><%= medicina.notas %></textarea>
               </div>
+              
             </div>
             <div class="form-row text-center">
               <div class="form-group col-md-12">

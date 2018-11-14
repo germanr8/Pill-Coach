@@ -64,6 +64,9 @@
                                                 <span class="badge badge-primary badge-pill"><%= medicina.tabletasConsumo %> mg</span>
                                             </li>
                                         <% } %>
+                                        <li class="list-group-item">Receta del  
+                                            <span class="badge badge-info badge-pill">Dr. <%= medicina.nombreDoctor %></span>
+                                        </li>
                                     </ul>
                                     <div class="card-body">
                                         <a href="/medicine-list/edit/<%= medicina.id_Medicina%>" class="btn btn-success">Editar</a>
