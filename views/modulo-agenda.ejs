@@ -43,7 +43,63 @@
                     <div class="col display-tool bg-white border border-secondary">
 
                         <div class="agenda-wrapper">
-                           
+                                <p class="font-weight-bold text-info" style="margin-top: 1%;">
+                                    Instrucciones: En este módulo usted puede marcar las medicinas programadas para el día de hoy como tomadas
+                                    <br>
+                                    <span class="text-danger" style="font-size: 14px;">* Tenga cuidado de no tomar un medicamento más de las veces indicadas en un día</span>
+                                </p>
+                                <% if (listaMedicinas.length > 0) {%>
+                                    <% listaMedicinas.forEach((medicina, index) => { %>
+                                    <div class="card medicina-individual" style="width: 18rem;">
+                                        <!--<img class="card-img-top" src="..." alt="Placeholder imágen">-->
+                                        <div class="card-body">
+                                            <h5 class="card-title font-weight-bold"><%= medicina.nombreMedicina %></h5>
+                                            <h6 class="card-subtitle mb-2 text-muted"><%= medicina.nombrePresentacion %></h6>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Tomar cada  
+                                                <span class="badge badge-primary badge-pill"><%= medicina.frecuenciaHoraDosis %> Horas</span>,
+                                                por <span class="badge badge-primary badge-pill"><%= medicina.diasDosis %> día(s)</span></li>
+                                            <% if (medicina.nombrePresentacion == 'jarabe') {%>
+                                                <li class="list-group-item">Tomar dosis de 
+                                                    <span class="badge badge-primary badge-pill"><%= medicina.cantidadConsumo %> ml</span>
+                                                </li>
+                                            <% } else { %>
+                                                <li class="list-group-item">Tomar dosis de 
+                                                    <span class="badge badge-primary badge-pill"><%= medicina.tabletasConsumo %> mg</span>
+                                                </li>
+                                            <% } %>
+                                            <li class="list-group-item">Receta del  
+                                                <span class="badge badge-info badge-pill">&#128100 Dr. <%= medicina.nombreDoctor %></span>
+                                            </li>
+                                        </ul>
+                                        <div class="card-body">
+                                            <a href="/daily-schedule/consume/<%= medicina.id_Medicina%>" class="btn button-consume">TOMAR</a>
+                                            <br>
+                                            <div style="margin-top: 1%;">Veces tomadas en el día: <span class="badge badge-success badge-pill"> <%= medicina.vecesTomadaDia %> veces </span></div>
+                                        </div>
+
+                                        <div class="bg-warning text-danger">
+                                            <span class="font-weight-bold">&#128712 Notas y observaciones:</span> <%= medicina.notas %>
+                                        </div>
+
+                                        <div class="card-footer bg-primary border-black text-white">
+                                            <% if (medicina.nombrePresentacion == 'jarabe') {%>
+                                                Frasco de <span class="badge badge-light badge-pill"><%= medicina.gramosTotales %> ml</span>
+                                            <% } else { %>
+                                                Caja de
+                                                <span class="badge badge-light badge-pill"><%= medicina.cantidadDePresentacion %> <%= medicina.nombrePresentacion %>(s)</span>,
+                                                cada una de <span class="badge badge-light badge-pill"> <%= medicina.gramosPorPresentacion %> mg</span>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                    <% }) %>
+                                <% } else { %>
+                                    <p class="font-weight-normal text-warning"> No hay medicinas por tomar hoy. </p>
+                                    
+                                <% } %>
+
+                            </div>
                             
                         </div>
                     </div>

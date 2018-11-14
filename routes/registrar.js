@@ -16,7 +16,7 @@ module.exports.registrar = function(req, res) {
   };
 
   connection.query(
-    'SELECT * FROM user WHERE username = ? OR email = ?',
+    'SELECT * FROM user WHERE username = ?',
     [req.body.usuario_r, req.body.correo_r],
     function(error, results, fields) {
       if (error) {
@@ -24,8 +24,7 @@ module.exports.registrar = function(req, res) {
       } else if (results.length > 0) {
         res.render('sign-up.ejs', {
           status: false,
-          message:
-            'El nombre de usuario o el correo ya existen. Intente con otros porfavor.'
+          message: 'El nombre de usuario ya existe. Eliga otra porfavor.'
         });
       } else {
         connection.query('INSERT INTO user SET ?', [usuario], function(

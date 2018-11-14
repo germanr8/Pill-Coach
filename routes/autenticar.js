@@ -22,10 +22,18 @@ module.exports.autenticar = function(req, res) {
         ) {
           req.session.userid = usuario; // Se cambia el id de la sesión
 
-          res.render('dashboard-paciente.ejs', {
-            status: true,
-            titulo: '¡Hola, ' + results[0].nombre_completo + '!'
-          });
+          if (results[0].paciente == 1) {
+            // Para manejar si es un usuario tipo paciente o tipo cuidador
+            res.render('dashboard-paciente.ejs', {
+              status: true,
+              titulo: '¡Hola, ' + results[0].nombre_completo + '!'
+            });
+          } else {
+            res.render('dashboard-cuidador.ejs', {
+              status: true,
+              titulo: '¡Hola, ' + results[0].nombre_completo + '!'
+            });
+          }
         } else {
           res.render('index.ejs', {
             status: false,

@@ -1,4 +1,4 @@
-var connection = require('../config');
+var connection = require('./../../config');
 var express = require('express');
 
 module.exports = {
@@ -21,6 +21,24 @@ module.exports = {
           status: true,
           message: 'Éxito'
         });
+      }
+    });
+  },
+
+  consumeMedicine: (req, res) => {
+    var selectedMedicine = req.params.id;
+    var query =
+      'UPDATE medicina SET vecesTomadaDia = vecesTomadaDia+1 WHERE id_Medicina=?';
+
+    connection.query(query, [selectedMedicine], function(
+      error,
+      results,
+      fields
+    ) {
+      if (error) {
+        return res.status(500).send(error);
+      } else {
+        res.redirect('/daily-schedule');
       }
     });
   }

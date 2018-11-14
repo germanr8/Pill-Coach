@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2018 at 05:10 AM
+-- Generation Time: Nov 14, 2018 at 11:17 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -48,7 +48,7 @@ INSERT INTO `medicina` (`id_Medicina`, `nombreMedicina`, `tipoMedicina`, `gramos
 (23, '1', 1, 1, 0, 0, ' ', 0),
 (24, 'Histiacil', 2, 50, 5, 10, ' ', 0),
 (26, 'Histiacil', 2, 300, 15, 20, ' ', 0),
-(29, '3', 1, 3, 0, 0, '3', 0);
+(29, 'Histiacil', 1, 3, 0, 0, '3', 5);
 
 -- --------------------------------------------------------
 
@@ -76,6 +76,13 @@ CREATE TABLE `paciente_cuidador` (
   `username_Paciente` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `inicioRelacion` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `paciente_cuidador`
+--
+
+INSERT INTO `paciente_cuidador` (`id_Relacion`, `username_Cuidador`, `username_Paciente`, `inicioRelacion`) VALUES
+(4, 'admin', 'germanr8', '2018-11-14 15:37:14');
 
 -- --------------------------------------------------------
 
@@ -124,7 +131,7 @@ INSERT INTO `receta` (`id_Receta`, `username_Paciente`, `id_Medicina`, `cantidad
 (19, 'yairpv', 23, 1, 0, 1, 1, 'Joaquin Lopez'),
 (20, 'yairpv', 24, 0, 1, 8, 8, 'Joaquin Lopez'),
 (22, 'ypv12', 26, 0, 2, 8, 14, 'Joaquin Lopez'),
-(25, 'germanr8', 29, 3, 0, 3, 3, 'Joaquin Lopez');
+(25, 'germanr8', 29, 3, 0, 3, 100, 'Joaquin López');
 
 -- --------------------------------------------------------
 
@@ -147,7 +154,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `nombre_completo`, `fecha_Nacimiento`, `email`, `contrasenia`, `pais`, `paciente`) VALUES
-('admin', 'admin', '1111-11-11', 'admin@admin.admin', '926df286a53ca87d49e484e8e7', 'AZ', 1),
+('admin', 'admin', '2018-11-14', '', '6e3da6f56ca37e09c5c14200af', 'MX', 0),
 ('germanr8', 'Germán Reyes', '1998-04-20', 'german.reyga@gmail.com', '573292e13e7564efb6886c82332623794f', 'MX', 1),
 ('Jj522', '1223', '1999-02-01', 'yairpv2129@gmail.com', '411dd74d87be9ed1efc0c3', 'MX', 1),
 ('usuario', 'asa', '1992-04-20', '', 'afaa56f4a2dd79ad6afc5bb14de6c03453', 'MX', 1),
@@ -208,13 +215,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `medicina`
 --
 ALTER TABLE `medicina`
-  MODIFY `id_Medicina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_Medicina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `notificaciones`
 --
 ALTER TABLE `notificaciones`
   MODIFY `id_Notificacion` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `paciente_cuidador`
+--
+ALTER TABLE `paciente_cuidador`
+  MODIFY `id_Relacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `presentacion_medicina`
@@ -226,7 +239,7 @@ ALTER TABLE `presentacion_medicina`
 -- AUTO_INCREMENT for table `receta`
 --
 ALTER TABLE `receta`
-  MODIFY `id_Receta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_Receta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Constraints for dumped tables

@@ -1,6 +1,6 @@
 <% include partials/header.ejs %>
 <% var titulo %>
-<% var listaMedicinas %>
+<% var message %>
 
 <div class="user-control text-white text-uppercase bg-primary">
         <span class="badge badge-light"><%= titulo %></span>
@@ -26,13 +26,13 @@
                                     <h5 class="card-title">Agenda del día</h5>
                                 </div>
                             </div>
-                            <div class="card card-calendario button-card selected-card">
+                            <div class="card card-calendario button-card">
                                 <img class="card-img-top" src="/img/calendario.png" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">Calendario</h5>
                                 </div>
                             </div>
-                            <div class="card card-enlazar button-card">
+                            <div class="card card-enlazar button-card selected-card">
                                 <img class="card-img-top" src="/img/people.png" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">Enlazar familiar / cuidador</h5>
@@ -40,14 +40,34 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col display-tool bg-white border border-secondary">
-                        <p class="font-weight-bold text-info text-center" style="margin-top: 1%;">
-                            Instrucciones: En este módulo usted puede elegir un día del calendario y ver qué medicinas tiene programadas de tomar en dicho día. 
-                            
-                        </p>
-                        <div class="calendario-wrapper">
-                           
-                            
+                    <div class="col display-tool bg-white border border-secondary text-center">
+                        <div>
+                            <p class="font-weight-bold text-info" style="margin-top: 1%;">
+                                Instrucciones: aqui podrá ingresar el nombre de su familiar o cuidador para enlazarse
+                                <br>
+                                <span class="text-danger" style="font-size: 14px;">* Asegurese de ingresar el usuario correctamente</span>
+                            </p>
+                        </div>
+                        <div class="enlace-wrapper text-center">
+                            <img src="/img/person-left.png" alt="Person" height="auto" width="10%">
+                            <div width="22%" style="display:inline-block; margin: 0px 2% 0px 2%">
+                                <form
+                                    class="container-fluid text-center"
+                                    action="/link/generate"
+                                    method="POST"
+                                >
+                                    <div class="form-group">
+                                        <label>Nombre de usuario de su cuidador / familiar</label>
+                                        <input type="text" class="form-control" id="user_cuidador" name="user_cuidador" placeholder="ej. juans123" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-primary" type="submit">Enlazar</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <img src="/img/person-right.png" alt="Person" height="auto" width="10%">
+                            <br>
+                            <span class="text-warning font-weight-bold" style="font-size: 16px;"> <%= message %> </span>
                         </div>
                     </div>
                 </div>

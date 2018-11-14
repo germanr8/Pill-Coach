@@ -1,0 +1,40 @@
+<% include partials/header.ejs %>
+        <% var titulo %>
+
+        <div class="user-control text-white text-uppercase bg-primary">
+                <span class="badge badge-light"><%= titulo %></span>
+              </div>
+              <div class="user-buttons text-white text-uppercase bg-primary text-right">
+                  <a href="/sign-out" class="d-inline-block btn-sm btn-secondary border border-white log-out-button">Cerrar sesión</a>
+                </div>
+        <div class="bg-dashboard-p dashboard-p">
+            <hr>
+            <div class="container-fluid">
+                <div class="row dashboard-row">
+                    <div class= "col-sm-1 col-xs-1 buttons-column">
+                        <div class="card-group button-card-group">
+                            <div class="card card-medicina button-card">
+                                <img class="card-img-top" src="/img/medicina.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Medicina de paciente</h5>
+                                </div>
+                            </div>
+                            <div class="card card-agenda button-card">
+                                <img class="card-img-top" src="/img/agenda.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Agenda de paciente</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col display-tool bg-white border border-secondary">
+                        <div class="jumbotron bg-white">
+                            <h1 class="display-4 text-primary">¡Hola!</h1>
+                            <p class="lead">Pill-Coach es una aplicación que le ayudará a llevar el control de consumo de medicinas de un paciente o familiar que esté cuidando. ¡Esperamos que disfrute su uso y sea de gran utilidad!</p>
+                            <img src="/img/smiley.png" alt="Smiley" height="auto" width="22%">
+                            <hr class="my-4">
+                            <p><span class="text-danger">Instrucciones:</span> seleccione una de las 2 opciones del menú.</p>
+                        </div>
+                    </div>
+            </body>
+            <% include partials/scripts-section-cuidador.ejs %>

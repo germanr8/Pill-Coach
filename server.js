@@ -15,12 +15,16 @@ const {
   eliminarMedicina,
   editarMedicina,
   loadEdicionMedicina
-} = require('./routes/medicina');
-const { loadDailySchedule } = require('./routes/agenda');
+} = require('./routes/paciente/medicina');
+const {
+  loadDailySchedule,
+  consumeMedicine
+} = require('./routes/paciente/agenda');
 const {
   loadCalendar,
   loadSpecificDaySchedule
-} = require('./routes/calendario');
+} = require('./routes/paciente/calendario');
+const { loadLinkModule, generateLink } = require('./routes/paciente/enlace');
 
 // CREAR LA CONEXIÓN DE LA BASE DE DATOS
 const connection = require('./config');
@@ -57,6 +61,8 @@ app.get('/sign-out', closeSession);
 app.get('/daily-schedule', loadDailySchedule);
 app.get('/calendar', loadCalendar);
 app.get('/calendar/:date', loadSpecificDaySchedule);
+app.get('/daily-schedule/consume/:id', consumeMedicine);
+app.get('/link/', loadLinkModule);
 
 //******************* MANEJAR ACCIONES DE LOS POSTS (FORMS)
 const autenticacion = require('./routes/autenticar');
@@ -66,6 +72,7 @@ app.post('/authenticate', autenticacion.autenticar);
 app.post('/register', registro.registrar);
 app.post('/medicine-list/add', agregarMedicina);
 app.post('/medicine-list/modify/:id', editarMedicina);
+app.post('/link/generate', generateLink);
 
 // La aplicación escuchara al puerto establecido
 app.listen(port, () => {

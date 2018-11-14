@@ -16,9 +16,16 @@
 
     $(document).on('click', '.card-calendario', function () {
         $(".card").removeClass("selected-card");
-        $(this).addClass("selected.-card");
+        $(this).addClass("selected-card");
 
         window.location.replace('/calendar');
+    });
+
+    $(document).on('click', '.card-enlazar', function () {
+        $(".card").removeClass("selected-card");
+        $(this).addClass("selected-card");
+
+        window.location.replace('/link');
     });
 
     $( document ).ready(function() {

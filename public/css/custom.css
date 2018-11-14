@@ -206,13 +206,17 @@ html {
   background-color: rgba(0, 0, 0, 0.125);
 }
 
-.lista-medicinas-wrapper .medicina-individual {
+.lista-medicinas-wrapper .medicina-individual,
+.agenda-wrapper .medicina-individual {
   text-align: center;
   display: inline-block;
   margin: 0.5% 0.5% 3% 0.5%;
+  border: 1px solid black;
 }
 
-.lista-medicinas-wrapper {
+.lista-medicinas-wrapper,
+.agenda-wrapper,
+.calendario-wrapper {
   text-align: center;
 }
 
@@ -306,6 +310,9 @@ html {
 .table-schedule td {
   font-size: 16px;
   font-weight: 600;
+}
+
+.table-schedule td {
   border-top: 2px dashed red;
 }
 
@@ -343,4 +350,31 @@ html {
   .table-schedule td {
     font-size: 14.5px;
   }
+}
+
+.button-consume {
+  color: #212529;
+  background-color: #ffc107;
+  border-color: #ffc107;
+  font-weight: bold;
+}
+
+.button-consume:hover {
+  color: #212529;
+  background-color: #e0a800;
+  border-color: #d39e00;
+}
+
+.button-consume:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5);
+  outline: 0;
+  color: #212529;
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+.button-consume:active {
+  color: #212529;
+  background-color: #e0a800;
+  border-color: #d39e00;
 }

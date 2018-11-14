@@ -1,0 +1,19 @@
+<script>
+    $(document).on('click', '.card-medicina', function () {
+        $(".card").removeClass("selected-card");
+        $(this).addClass("selected-card");
+
+
+        window.location.replace('/see-medicine');
+    });
+
+    $(document).on('click', '.card-agenda', function () {
+        $(".card").removeClass("selected-card");
+        $(this).addClass("selected-card");
+
+        window.location.replace('/see-schedule');
+    }); 
+
+</script>
+
+</html>

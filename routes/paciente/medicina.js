@@ -1,4 +1,4 @@
-var connection = require('./../config');
+var connection = require('./../../config');
 var express = require('express');
 
 module.exports = {
@@ -191,7 +191,6 @@ module.exports = {
                 return res.status(500).send(error);
               });
             }
-            console.log(results);
             // Success
             res.redirect('/medicine-list');
           });

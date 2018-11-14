@@ -6,8 +6,8 @@
         <span class="badge badge-light"><%= titulo %></span>
       </div>
       <div class="user-buttons text-white text-uppercase bg-primary text-right">
-          <a href="/sign-out" class="d-inline-block btn-sm btn-secondary border border-white log-out-button ">Cerrar sesión</a>
-        </div>
+        <a href="/sign-out" class="d-inline-block btn-sm btn-secondary border border-white log-out-button ">Cerrar sesión</a>
+    </div>
         <div class="bg-dashboard-p dashboard-p">
             <hr>
             <div class="container-fluid">
@@ -42,64 +42,67 @@
                     </div>
                     <div class="col display-tool bg-white border border-secondary">
 
-                        <div class="lista-medicinas-wrapper">
-                            <% if (listaMedicinas.length > 0) {%>
-                                <% listaMedicinas.forEach((medicina, index) => { %>
-                                <div class="card medicina-individual" style="width: 18rem;">
-                                    <!--<img class="card-img-top" src="..." alt="Placeholder imágen">-->
-                                    <div class="card-body">
-                                        <h5 class="card-title font-weight-bold"><%= medicina.nombreMedicina %></h5>
-                                        <h6 class="card-subtitle mb-2 text-muted"><%= medicina.nombrePresentacion %></h6>
+                            <div class="lista-medicinas-wrapper">
+                                    <p class="font-weight-bold text-info" style="margin-top: 1%;">
+                                        Instrucciones: En este módulo usted puede registrar, editar o eliminar información de sus medicinas y recetas médicas. 
+                                    </p>
+                                    <% if (listaMedicinas.length > 0) {%>
+                                        <% listaMedicinas.forEach((medicina, index) => { %>
+                                        <div class="card medicina-individual" style="width: 18rem;">
+                                            <!--<img class="card-img-top" src="..." alt="Placeholder imágen">-->
+                                            <div class="card-body">
+                                                <h5 class="card-title font-weight-bold"><%= medicina.nombreMedicina %></h5>
+                                                <h6 class="card-subtitle mb-2 text-muted"><%= medicina.nombrePresentacion %></h6>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Tomar cada  
+                                                    <span class="badge badge-primary badge-pill"><%= medicina.frecuenciaHoraDosis %> Horas</span>,
+                                                    por <span class="badge badge-primary badge-pill"><%= medicina.diasDosis %> día(s)</span></li>
+                                                <% if (medicina.nombrePresentacion == 'jarabe') {%>
+                                                    <li class="list-group-item">Tomar dosis de 
+                                                        <span class="badge badge-primary badge-pill"><%= medicina.cantidadConsumo %> ml</span>
+                                                    </li>
+                                                <% } else { %>
+                                                    <li class="list-group-item">Tomar dosis de 
+                                                        <span class="badge badge-primary badge-pill"><%= medicina.tabletasConsumo %> mg</span>
+                                                    </li>
+                                                <% } %>
+                                                <li class="list-group-item">Receta del  
+                                                    <span class="badge badge-info badge-pill">&#128100 Dr. <%= medicina.nombreDoctor %></span>
+                                                </li>
+                                            </ul>
+                                            <div class="card-body">
+                                                <a href="/medicine-list/edit/<%= medicina.id_Medicina%>" class="btn btn-success">Editar</a>
+                                                <a href="/medicine-list/delete/<%= medicina.id_Medicina%>" class="btn btn-danger">Eliminar</a>
+                                            </div>
+        
+                                            <div class="bg-warning text-danger">
+                                                <span class="font-weight-bold">&#128712 Notas y observaciones:</span> <%= medicina.notas %>
+                                            </div>
+        
+                                            <div class="card-footer bg-primary border-black text-white">
+                                                <% if (medicina.nombrePresentacion == 'jarabe') {%>
+                                                    Frasco de <span class="badge badge-light badge-pill"><%= medicina.gramosTotales %> ml</span>
+                                                <% } else { %>
+                                                    Caja de
+                                                    <span class="badge badge-light badge-pill"><%= medicina.cantidadDePresentacion %> <%= medicina.nombrePresentacion %>(s)</span>,
+                                                    cada una de <span class="badge badge-light badge-pill"> <%= medicina.gramosPorPresentacion %> mg</span>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                        <% }) %>
+                                    <% } else { %>
+                                        <p class="font-weight-normal text-warning"> No hay medicinas registradas. </p>
+                                        
+                                    <% } %>
+                                    <div class="card align-top medicina-individual add-medicine-card" style="width: 18rem;">
+                                            <h5 class="card-header font-weight-bold">Añadir nueva medicina</h5>
+                                        <div class="card-body">
+                                                <a href="/medicine-list/medicine-registry" class="add-symbol"></a>
+                                        </div>
                                     </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Tomar cada  
-                                            <span class="badge badge-primary badge-pill"><%= medicina.frecuenciaHoraDosis %> Horas</span>,
-                                            por <span class="badge badge-primary badge-pill"><%= medicina.diasDosis %> día(s)</span></li>
-                                        <% if (medicina.nombrePresentacion == 'jarabe') {%>
-                                            <li class="list-group-item">Tomar dosis de 
-                                                <span class="badge badge-primary badge-pill"><%= medicina.cantidadConsumo %> ml</span>
-                                            </li>
-                                        <% } else { %>
-                                            <li class="list-group-item">Tomar dosis de 
-                                                <span class="badge badge-primary badge-pill"><%= medicina.tabletasConsumo %> mg</span>
-                                            </li>
-                                        <% } %>
-                                        <li class="list-group-item">Receta del  
-                                            <span class="badge badge-info badge-pill">Dr. <%= medicina.nombreDoctor %></span>
-                                        </li>
-                                    </ul>
-                                    <div class="card-body">
-                                        <a href="/medicine-list/edit/<%= medicina.id_Medicina%>" class="btn btn-success">Editar</a>
-                                        <a href="/medicine-list/delete/<%= medicina.id_Medicina%>" class="btn btn-danger">Eliminar</a>
-                                    </div>
-
-                                    <div class="bg-warning text-danger">
-                                        <span class="font-weight-bold">&#128712 Notas y observaciones:</span> <%= medicina.notas %>
-                                    </div>
-
-                                    <div class="card-footer bg-primary border-black text-white">
-                                        <% if (medicina.nombrePresentacion == 'jarabe') {%>
-                                            Frasco de <span class="badge badge-light badge-pill"><%= medicina.gramosTotales %> ml</span>
-                                        <% } else { %>
-                                            Caja de
-                                            <span class="badge badge-light badge-pill"><%= medicina.cantidadDePresentacion %> <%= medicina.nombrePresentacion %>(s)</span>,
-                                            cada una de <span class="badge badge-light badge-pill"> <%= medicina.gramosPorPresentacion %> mg</span>
-                                        <% } %>
-                                    </div>
+        
                                 </div>
-                                <% }) %>
-                            <% } else { %>
-                                <p class="font-weight-normal text-warning"> No hay medicinas registradas. </p>
-                                
-                            <% } %>
-                            <div class="card align-top medicina-individual add-medicine-card" style="width: 18rem;">
-                                    <h5 class="card-header font-weight-bold">Añadir nueva medicina</h5>
-                                <div class="card-body">
-                                        <a href="/medicine-list/medicine-registry" class="add-symbol"></a>
-                                </div>
-                            </div>
-
-                        </div>
                     </div>
                 </div>
             </div>

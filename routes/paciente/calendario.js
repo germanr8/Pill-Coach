@@ -1,4 +1,4 @@
-var connection = require('../config');
+var connection = require('./../../config');
 var express = require('express');
 
 module.exports = {
