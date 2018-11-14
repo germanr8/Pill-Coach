@@ -1,0 +1,91 @@
+<% include partials/header.ejs %>
+<% var titulo %>
+<% var listaMedicinas %>
+<% var dia %>
+
+<div class="user-control text-white text-uppercase bg-primary">
+        <span class="badge badge-light"><%= titulo %></span>
+      </div>
+      <div class="user-buttons text-white text-uppercase bg-primary text-right">
+          <a href="/sign-out" class="d-inline-block btn-sm btn-secondary border border-white log-out-button">Cerrar sesión</a>
+        </div>
+        <div class="bg-dashboard-p dashboard-p">
+            <hr>
+            <div class="container-fluid">
+                <div class="row dashboard-row">
+                    <div class= "col-sm-1 col-xs-1 buttons-column">
+                        <div class="card-group button-card-group">
+                            <div class="card card-medicina button-card">
+                                <img class="card-img-top" src="/img/medicina.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Medicina</h5>
+                                </div>
+                            </div>
+                            <div class="card card-agenda button-card">
+                                <img class="card-img-top" src="/img/agenda.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Agenda del día</h5>
+                                </div>
+                            </div>
+                            <div class="card card-calendario button-card selected-card">
+                                <img class="card-img-top" src="/img/calendario.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Calendario</h5>
+                                </div>
+                            </div>
+                            <div class="card card-enlazar button-card">
+                                <img class="card-img-top" src="/img/people.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Enlazar familiar / cuidador</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col display-tool bg-white border border-secondary text-center">
+                        <h4 class="font-italic"> AGENDA PARA EL <%= dia %></h4>
+                        <div class="selected-day-schedule">
+                            <% if (listaMedicinas != null) { %>  
+                                <% if (listaMedicinas.length > 0) {%>
+                                <table class="table table-responsive-sm table-sm table-schedule">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Tipo</th>
+                                        <th scope="col">Dosis</th>
+                                        <th scope="col">Empaque</th>
+                                        <th scope="col">Doctor de receta</th>
+                                        <th scope="col">Notas</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <% listaMedicinas.forEach((medicina, index) => { %>
+                                        <tr>
+                                        <td><%= medicina.nombreMedicina %></td>
+                                        <td><%= medicina.nombrePresentacion %></td>
+                                            <% if(medicina.nombrePresentacion == 'jarabe'){ %>
+                                                <td><%= medicina.cantidadConsumo %> mL</td>
+                                                <td>Frasco de <%= medicina.gramosTotales %> mL</td>
+                                            <% } else { %>
+                                                <td><%= medicina.tabletasConsumo %> mg</td>
+                                                <td>Caja de <%= medicina.cantidadDePresentacion %> pastillas, cada una de <%= medicina.gramosPorPresentacion %> mg</td>
+                                            <% } %>
+                                        <td>Dr. <%= medicina.nombreDoctor %></td>
+                                        <td><%= medicina.notas %></td>
+                                        <% }); %>
+                                        
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <% } else { %>
+                                    <h4 class="font-weight-bold" style="padding-top: 5%;">No hay ninguna medicina registrada para este día</h4>
+                                <% } %>
+                            <% } else { %>
+                                <h4 class="font-weight-bold" style="padding-top: 5%;">Agenda de días anteriores no disponible</h4>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </body>
+    <% include partials/scripts-section-paciente.ejs %>

@@ -106,7 +106,7 @@ html {
 }
 
 /* Responsive */
-@media (max-width: 575px) {
+@media (max-width: 577px) {
   .bloque-sign {
     width: 80%;
   }
@@ -188,7 +188,11 @@ html {
   max-width: none;
 }
 
-.buttons-column {
+@media (max-width: 575px) {
+  .buttons-column {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }
 
 .display-tool {
@@ -262,6 +266,10 @@ html {
   }
 }
 
+/**********************************/
+/* CSS para modulo de calendario */
+/********************************/
+
 .calendario-wrapper thead {
   text-align: center;
 }
@@ -280,4 +288,59 @@ html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol';
+}
+
+.selected-day-schedule {
+  position: relative;
+  width: 99%;
+  height: auto;
+  min-height: 20%;
+  color: red;
+  background-image: url(/img/hoja2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-left: 12%;
+}
+
+.table-schedule th,
+.table-schedule td {
+  font-size: 16px;
+  font-weight: 600;
+  border-top: 2px dashed red;
+}
+
+@media (max-width: 430px) {
+  .table-schedule th,
+  .table-schedule td {
+    font-size: 11px;
+  }
+
+  .selected-day-schedule {
+    padding-left: 0px;
+  }
+}
+
+@media (max-width: 575px) and (min-width: 430px) {
+  .selected-day-schedule {
+    min-height: 125px;
+  }
+
+  .selected-day-schedule {
+    padding-left: 0px;
+  }
+
+  .table-schedule th,
+  .table-schedule td {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 770px) and (min-width: 575px) {
+  .selected-day-schedule {
+    padding-left: 0px;
+  }
+  .table-schedule th,
+  .table-schedule td {
+    font-size: 14.5px;
+  }
 }
