@@ -17,6 +17,10 @@ const {
   loadEdicionMedicina
 } = require('./routes/medicina');
 const { loadDailySchedule } = require('./routes/agenda');
+const {
+  loadCalendar,
+  loadSpecificDaySchedule
+} = require('./routes/calendario');
 
 // CREAR LA CONEXIÓN DE LA BASE DE DATOS
 const connection = require('./config');
@@ -51,6 +55,8 @@ app.get('/medicine-list/delete/:id', eliminarMedicina);
 app.get('/medicine-list/medicine-registry', loadRegistroMedicina);
 app.get('/sign-out', closeSession);
 app.get('/daily-schedule', loadDailySchedule);
+app.get('/calendar', loadCalendar);
+app.get('/calendar/:date', loadSpecificDaySchedule);
 
 //******************* MANEJAR ACCIONES DE LOS POSTS (FORMS)
 const autenticacion = require('./routes/autenticar');

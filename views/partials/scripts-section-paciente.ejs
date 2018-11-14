@@ -12,15 +12,19 @@
         $(this).addClass("selected-card");
 
         window.location.replace('/daily-schedule');
-
     });
 
     $(document).on('click', '.card-calendario', function () {
         $(".card").removeClass("selected-card");
         $(this).addClass("selected.-card");
+
+        window.location.replace('/calendar');
     });
 
     $( document ).ready(function() {
+        
+        
+
         var checkid2 = $('#tipo_medicina').val();
 
         if(checkid2 == 1 ){ // Manejar los medicamentos que son liquidos (es su id)
@@ -127,6 +131,16 @@
 
         
         
+    });
+
+    $('.calendario-wrapper').calendar({
+        days: ['LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SÁB', 'DOM'],
+        months: ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'],
+        color: '#007bff',
+        onSelect: function (event) {
+            console.log(event.label);
+            window.location.replace('/calendar/' + event.label);
+        }
     });
 
 </script>

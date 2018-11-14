@@ -15,7 +15,6 @@ module.exports = {
       if (error) {
         return res.status(500).send(error);
       } else {
-        console.log(results);
         res.render('modulo-agenda.ejs', {
           listaMedicinas: results,
           titulo: 'Panel de agenda',
