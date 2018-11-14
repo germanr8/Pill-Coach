@@ -1,0 +1,55 @@
+<% include partials/header.ejs %>
+        <% var titulo %>
+        <% var message %>
+        <% var pacientes %>
+        <% function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+              color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+          } %>
+
+        <div class="user-control text-white text-uppercase bg-primary">
+                <span class="badge badge-light"><%= titulo %></span>
+              </div>
+              <div class="user-buttons text-white text-uppercase bg-primary text-right">
+                  <a href="/sign-out" class="d-inline-block btn-sm btn-secondary border border-white log-out-button">Cerrar sesión</a>
+                </div>
+        <div class="bg-dashboard-p dashboard-p">
+            <hr>
+            <div class="container-fluid">
+                <div class="row dashboard-row">
+                    <div class= "col-sm-1 col-xs-1 buttons-column">
+                        <div class="card-group button-card-group">
+                            <div class="card card-medicina button-card">
+                                <img class="card-img-top" src="/img/medicina.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Medicina de paciente</h5>
+                                </div>
+                            </div>
+                            <div class="card card-agenda button-card">
+                                <img class="card-img-top" src="/img/agenda.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Agenda de paciente</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col display-tool bg-white border border-secondary">
+                        <div class="cuidador text-center">
+                            <div>
+                                <p class="font-weight-bold text-info" style="margin-top: 1%;">
+                                    Instrucciones: elija el nombre del paciente para ver su lista de medicinas
+                                </p>
+                            </div>
+                            <% pacientes.forEach((paciente, index) => { %> 
+                            
+                                <a class="btn" href="/see-medicine/<%= paciente.username %>" style="font-size: 24px; color: white; -webkit-text-stroke: 0.5px black; background-color: <%= getRandomColor() %> ;padding: 8px 50px 8px 50px; margin-bottom: 4%;">&#128100 <%= paciente.nombre_completo %></a>
+                            <% }) %>
+                            <span class="text-warning font-weight-bold" style="font-size: 16px;"> <%= message %> </span>
+                        </div>
+                    </div>
+            </body>
+            <% include partials/scripts-section-cuidador.ejs %>

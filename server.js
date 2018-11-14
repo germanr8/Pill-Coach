@@ -25,6 +25,10 @@ const {
   loadSpecificDaySchedule
 } = require('./routes/paciente/calendario');
 const { loadLinkModule, generateLink } = require('./routes/paciente/enlace');
+const {
+  loadRelatedPatients,
+  loadMedicineFromPatient
+} = require('./routes/cuidador/acciones');
 
 // CREAR LA CONEXIÓN DE LA BASE DE DATOS
 const connection = require('./config');
@@ -63,6 +67,8 @@ app.get('/calendar', loadCalendar);
 app.get('/calendar/:date', loadSpecificDaySchedule);
 app.get('/daily-schedule/consume/:id', consumeMedicine);
 app.get('/link/', loadLinkModule);
+app.get('/see-medicine', loadRelatedPatients);
+app.get('/see-medicine/:id', loadMedicineFromPatient);
 
 //******************* MANEJAR ACCIONES DE LOS POSTS (FORMS)
 const autenticacion = require('./routes/autenticar');
