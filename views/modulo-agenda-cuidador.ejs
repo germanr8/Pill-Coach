@@ -1,7 +1,6 @@
 <% include partials/header.ejs %>
 <% var titulo %>
 <% var listaMedicinas %>
-<% var fecha %>
 
 <div class="user-control text-white text-uppercase bg-primary">
         <span class="badge badge-light"><%= titulo %></span>
@@ -18,25 +17,13 @@
                             <div class="card card-medicina button-card">
                                 <img class="card-img-top" src="/img/medicina.png" alt="Card image cap">
                                 <div class="card-body">
-                                    <h5 class="card-title">Medicina</h5>
+                                    <h5 class="card-title">Medicina de paciente</h5>
                                 </div>
                             </div>
                             <div class="card card-agenda button-card selected-card">
                                 <img class="card-img-top" src="/img/agenda.png" alt="Card image cap">
                                 <div class="card-body">
-                                    <h5 class="card-title">Agenda del día</h5>
-                                </div>
-                            </div>
-                            <div class="card card-calendario button-card">
-                                <img class="card-img-top" src="/img/calendario.png" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Calendario</h5>
-                                </div>
-                            </div>
-                            <div class="card card-enlazar button-card">
-                                <img class="card-img-top" src="/img/people.png" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Enlazar familiar / cuidador</h5>
+                                    <h5 class="card-title">Agenda de paciente</h5>
                                 </div>
                             </div>
                         </div>
@@ -45,12 +32,7 @@
 
                         <div class="agenda-wrapper">
                                 <p class="font-weight-bold text-info" style="margin-top: 1%;">
-                                    Instrucciones: En este módulo usted puede marcar las medicinas programadas para el día de hoy como tomadas
-                                    <br>
-                                    <span class="text-danger" style="font-size: 14px;">* Tenga cuidado de no tomar un medicamento más de las veces indicadas en un día</span>
-                                </p>
-                                <p class="font-italic" style="margin-top: 1%;">
-                                    MEDICINAS A TOMAR HOY <%= fecha %>
+                                    Instrucciones: En este módulo usted puede ver las medicinas que tiene que tomar el paciente elegido hoy <span style="color: black;" class="font-italic" ><%= fecha %></span>
                                 </p>
                                 <% if (listaMedicinas.length > 0) {%>
                                     <% listaMedicinas.forEach((medicina, index) => { %>
@@ -78,8 +60,6 @@
                                             </li>
                                         </ul>
                                         <div class="card-body">
-                                            <a href="/daily-schedule/consume/<%= medicina.id_Medicina%>" class="btn button-consume">TOMAR</a>
-                                            <br>
                                             <div style="margin-top: 1%;">Veces tomadas en el día: <span class="badge badge-success badge-pill"> <%= medicina.vecesTomadaDia %> veces </span></div>
                                         </div>
 
@@ -100,7 +80,6 @@
                                     <% }) %>
                                 <% } else { %>
                                     <p class="font-weight-normal text-warning"> No hay medicinas por tomar hoy. </p>
-                                    
                                 <% } %>
 
                             </div>
@@ -110,4 +89,4 @@
                 </div>
             </div>
     </body>
-    <% include partials/scripts-section-paciente.ejs %>
+    <% include partials/scripts-section-cuidador.ejs %>

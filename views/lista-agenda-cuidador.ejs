@@ -23,13 +23,13 @@
                 <div class="row dashboard-row">
                     <div class= "col-sm-1 col-xs-1 buttons-column">
                         <div class="card-group button-card-group">
-                            <div class="card card-medicina button-card selected-card">
+                            <div class="card card-medicina button-card">
                                 <img class="card-img-top" src="/img/medicina.png" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">Medicina de paciente</h5>
                                 </div>
                             </div>
-                            <div class="card card-agenda button-card">
+                            <div class="card card-agenda button-card selected-card">
                                 <img class="card-img-top" src="/img/agenda.png" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">Agenda de paciente</h5>
@@ -41,12 +41,12 @@
                         <div class="cuidador text-center">
                             <div>
                                 <p class="font-weight-bold text-info" style="margin-top: 1%;">
-                                    Instrucciones: elija el nombre del paciente para ver su lista de medicinas
+                                    Instrucciones: elija el nombre del paciente para ver su agenda del día
                                 </p>
                             </div>
                             <% pacientes.forEach((paciente, index) => { %> 
                             
-                                <a class="btn" href="/see-medicine/<%= paciente.username %>" style="font-size: 24px; color: white; -webkit-text-stroke: 0.5px black; background-color: <%= getRandomColor() %> ;padding: 8px 50px 8px 50px; margin-bottom: 4%;">&#128100 <%= paciente.nombre_completo %></a>
+                                <a class="btn" href="/see-schedule/<%= paciente.username %>" style="font-size: 24px; color: white; -webkit-text-stroke: 0.5px black; background-color: <%= getRandomColor() %> ;padding: 8px 50px 8px 50px; margin-bottom: 4%;">&#128100 <%= paciente.nombre_completo %></a>
                             <% }) %>
                             <span class="text-warning font-weight-bold" style="font-size: 16px;"> <%= message %> </span>
                         </div>

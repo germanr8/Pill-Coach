@@ -15,7 +15,14 @@ module.exports = {
       if (error) {
         return res.status(500).send(error);
       } else {
+        fechaHoy = new Date();
         res.render('modulo-agenda.ejs', {
+          fecha:
+            fechaHoy.getFullYear() +
+            '/' +
+            fechaHoy.getMonth() +
+            '/' +
+            fechaHoy.getDay(),
           listaMedicinas: results,
           titulo: 'Panel de agenda',
           status: true,
