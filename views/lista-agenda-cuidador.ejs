@@ -44,6 +44,7 @@
                                     Instrucciones: elija el nombre del adulto mayor para ver su agenda del día
                                 </p>
                             </div>
+                                
                             <% pacientes.forEach((paciente, index) => { %> 
                             
                                 <a class="btn" href="/see-schedule/<%= paciente.username %>" style="font-size: 24px; color: white; -webkit-text-stroke: 0.5px black; background-color: <%= getRandomColor() %> ;padding: 8px 50px 8px 50px; margin-bottom: 4%;">&#128100 <%= paciente.nombre_completo %></a>
