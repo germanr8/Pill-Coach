@@ -9,5 +9,7 @@ Aplicación web para combatir el fenómeno de la polifarmacia y para llevar un c
 ```shell
 git clone https://github.com/germanr8/Pill-Coach.git
 
+cd Pill-Coach
+
 npm start
 ```
